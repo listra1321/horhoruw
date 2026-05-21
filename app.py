@@ -70,17 +70,59 @@ def explain_with_lime(text):
 
 def validate_destination(text, caption, destinasi):
 
-    text_lower = (text + " " + caption).lower()
+    text_lower = text.lower()
+    caption_lower = caption.lower()
 
-    if destinasi == "Candi Borobudur":
-        keywords = ["borobudur", "candi", "stupa", "magelang"]
-    elif destinasi == "Danau Toba":
-        keywords = ["toba", "danau", "sumatera", "samosir"]
-    else:
-        return True
+    # =====================================================
+    # KEYWORDS TIAP DESTINASI
+    # =====================================================
 
-    # cek apakah ada keyword relevan
-    return any(k in text_lower for k in keywords)
+    borobudur_keywords = [
+        "borobudur",
+        "candi",
+        "stupa",
+        "temple"
+    ]
+
+    toba_keywords = [
+        "toba",
+        "danau",
+        "lake",
+        "water"
+    ]
+
+    riam_keywords = [
+        "riam",
+        "berawant",
+        "sungai",
+        "air terjun",
+        "arus"
+    ]
+
+    sepadang_keywords = [
+        "sepadang",
+        "hill",
+        "bukit",
+        "perbukitan",
+        "alam"
+    ]
+
+    # =====================================================
+    # DETEKSI
+    # =====================================================
+
+    all_keywords = {
+        "Candi Borobudur": borobudur_keywords,
+        "Danau Toba": toba_keywords,
+        "Riam Berawant": riam_keywords,
+        "Sepadang Hill": sepadang_keywords
+    }
+
+    selected_keywords = all_keywords[destinasi]
+
+    combined = text_lower + " " + caption_lower
+
+    return any(k in combined for k in selected_keywords)
 
 # =========================
 # PASSWORD PROTECTION
@@ -186,7 +228,9 @@ def validate_destination(text, caption, destinasi):
 # =========================
 # UI
 # =========================
-st.title("🌿 Agentic Decision Support System (DSS) Ekowisata")
+st.title(
+    "🌿 Storytelling Multimodal untuk Agentic Decision Support System Pariwisata"
+)
 
 text = st.text_area("📝 Masukkan teks wisata")
 
@@ -195,7 +239,13 @@ image_file = st.file_uploader("📷 Upload gambar")
 # =========================
 # VALIDASI DESTINASI (ANTI HALUSINASI DOMAIN)
 # =========================
-DESTINASI_VALID = ["Danau Toba", "Candi Borobudur"]
+#DESTINASI_VALID = ["Danau Toba", "Candi Borobudur"]
+DESTINASI_VALID = [
+    "Danau Toba",
+    "Candi Borobudur",
+    "Riam Berawant",
+    "Sepadang Hill"
+]
 
 destinasi = st.selectbox(
     "📍 Pilih Destinasi Wisata",
@@ -206,22 +256,12 @@ if destinasi not in DESTINASI_VALID:
     st.error("Destinasi tidak valid.")
     st.stop()
 
-tujuan = st.selectbox(
-    "🎯 Tujuan Kebijakan",
-    [
-        "Konservasi Lingkungan",
-        "Pemberdayaan Masyarakat Lokal",
-        "Optimalisasi Ekonomi Pariwisata",
-        "Keseimbangan Ekowisata Berkelanjutan"
-    ]
-)
-
 orch = AgentOrchestrator()
 
 # =========================
 # GENERATE
 # =========================
-if st.button("🧠 Generate Storytelling & Kebijakan"):
+if st.button("🧠 Generate Storytelling & Agentic DSS"):
 
     if text and image_file:
 
@@ -268,25 +308,51 @@ if st.button("🧠 Generate Storytelling & Kebijakan"):
         # MULTI-AGENT PROCESS
         # =========================
         with st.spinner("🤖 Menghasilkan storytelling dan kebijakan..."):
-            result = orch.run(text, caption, destinasi, tujuan)
+            result = orch.run(text, caption, destinasi)
 
-        # =========================
-        # OUTPUT BERSIH (NO CAPTION)
-        # =========================
+        # =====================================================
+        # OUTPUT
+        # =====================================================
+        
         st.divider()
-
-        # split hasil jadi 2 bagian
-        if "REKOMENDASI:" in result:
-            story, rekom = result.split("REKOMENDASI:", 1)
+        
+        # =====================================================
+        # SPLIT STORY & DSS
+        # =====================================================
+        
+        if "###DSS###" in result:
+            story, dss = result.split("###DSS###", 1)
         else:
             story = result
-            rekom = ""
-
-        # =========================
+            dss = "Hasil DSS tidak tersedia."
+        
+        # =====================================================
         # STORYTELLING
-        # =========================
+        # =====================================================
+        
         st.subheader("📄 Storytelling Wisata")
+        
         st.write(f"{emoji} {story.strip()}")
+        
+        st.caption(
+            "Narasi storytelling multimodal berdasarkan integrasi teks wisatawan dan interpretasi visual gambar."
+        )
+        
+        st.divider()
+        
+        # =====================================================
+        # AGENTIC DSS
+        # =====================================================
+        
+        st.subheader("🧠 Hasil Agentic DSS")
+        
+        st.write(dss.strip())
+        
+        st.caption(
+            "Hasil reasoning Agentic Decision Support System berbasis storytelling multimodal."
+        )
+
+ 
         
         # ======================================================
         # XAI 1: INPUT EXPLANATION
@@ -345,6 +411,6 @@ if st.button("🧠 Generate Storytelling & Kebijakan"):
 # ======================================================
 st.markdown("---")
 st.caption(
-    "Catatan: Sistem ini merupakan prototipe DSS berbasis agentic control "
-    "dan tidak menggantikan kewenangan pengambil kebijakan."
+    "Catatan: Sistem ini merupakan prototipe Agentic Decision Support System "
+    "dan tidak menggantikan kewenangan pengambil keputusan."
 )
