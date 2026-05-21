@@ -118,7 +118,7 @@ class DSSAgent:
 
     def run(self, storytelling, destination):
 
-    system_prompt = f"""
+        system_prompt = f"""
 Anda adalah Agentic Decision Support System (DSS) berbasis storytelling multimodal untuk pariwisata berkelanjutan.
 
 Fokus hanya pada:
@@ -144,7 +144,7 @@ ATURAN SANGAT PENTING:
 - Narasi harus terasa natural dan manusiawi
 """
 
-    user_prompt = f"""
+        user_prompt = f"""
 STORYTELLING:
 {storytelling}
 
@@ -159,12 +159,12 @@ ATURAN:
 - Fokus pada suasana, pengalaman wisatawan, kondisi alam, dan makna wisata
 """
 
-    result = call_llm(system_prompt, user_prompt)
+        result = call_llm(system_prompt, user_prompt)
 
-    result = result.replace("\n", " ")
-    result = " ".join(result.split())
+        result = result.replace("\n", " ")
+        result = " ".join(result.split())
 
-    return result
+        return result
 
 
 # =====================================================
