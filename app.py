@@ -560,6 +560,21 @@ BUTTON
         0 0 45px rgba(6,182,212,0.45);
 }
 
+/* HIDE STREAMLIT HEADER */
+header[data-testid="stHeader"]{
+    display: none;
+}
+
+/* HIDE TOOLBAR */
+[data-testid="stToolbar"]{
+    display: none;
+}
+
+/* HIDE HAMBURGER */
+#MainMenu{
+    visibility: hidden;
+}
+
 footer {
     visibility: hidden;
 }
