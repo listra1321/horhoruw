@@ -117,7 +117,7 @@ DESKRIPSI GAMBAR:
 {caption}
 
 TUGAS:
-Buat storytelling multimodal dalam satu paragraf yang menyatukan pengalaman wisatawan dan suasana visual destinasi secara alami.
+Buat storytelling multimodal dalam satu paragraf yang menyatukan pengalaman wisatawan dan suasana visual destinasi secara alami dan berbahasa INDONESIA.
 """
 
         result = call_llm(system_prompt, user_prompt)
@@ -183,7 +183,7 @@ STORYTELLING:
 {storytelling}
 
 TUGAS:
-Buat satu paragraf hasil Agentic DSS berdasarkan storytelling tersebut.
+Buat satu paragraf hasil Agentic DSS berdasarkan storytelling tersebut dan berbahasa INDONESIA.
 
 ATURAN:
 - Jangan membuat rekomendasi poin
