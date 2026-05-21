@@ -354,7 +354,8 @@ ROBOT CONTAINER
 
     align-items: center;
 
-    margin-top: 40px;
+    margin-top: 20px;
+    
 }
 
 /* =========================================
@@ -362,6 +363,7 @@ ROBOT IMAGE
 ========================================= */
 
 .robot-container img {
+    margin-left: 50px;
 
     filter:
         drop-shadow(0 0 25px rgba(168,85,247,0.45));
