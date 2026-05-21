@@ -8,6 +8,7 @@ OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY") or st.secrets["OPENROUTER_A
 
 st.set_page_config(
     page_title="Agentic DSS Ekowisata | Listra Horhoruw",
+    page_icon="🌱",
     layout="wide"
 )
 
