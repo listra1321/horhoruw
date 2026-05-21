@@ -14,7 +14,7 @@ st.markdown("""
 
 /* Background */
 .stApp {
-    background-color: #F5F7FA;
+    #background-color: #F5F7FA;
 }
 
 /* Main Container */
