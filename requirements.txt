@@ -1,0 +1,10 @@
+streamlit
+requests
+pillow
+python-dotenv
+transformers
+torch
+requests
+lime==0.2.0.1
+scikit-learn
+numpy
