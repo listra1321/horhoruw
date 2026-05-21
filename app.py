@@ -11,7 +11,7 @@ st.markdown("""
     <div class="topbar-left">
 
         <img src="https://cdn-icons-png.flaticon.com/512/4712/4712109.png"
-        class="topbar-logo">
+        class="topbar-logo"/>
 
         <div class="topbar-title">
             Agentic DSS Pariwisata
@@ -69,6 +69,8 @@ st.markdown("""
 
     border-bottom:
         1px solid rgba(255,255,255,0.08);
+        
+    overflow: hidden;
 }
 
 /* LEFT */
@@ -116,6 +118,12 @@ st.markdown("""
 
     padding-top: 110px !important;
 }
+
+.block-container{
+    padding-top: 110px !important;
+}
+
+
 
 .stApp {
 
