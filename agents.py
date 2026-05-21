@@ -118,39 +118,53 @@ class DSSAgent:
 
     def run(self, storytelling, destination):
 
-        system_prompt = f"""
-Anda adalah Agentic Decision Support System (DSS) untuk pariwisata berkelanjutan.
+    system_prompt = f"""
+Anda adalah Agentic Decision Support System (DSS) berbasis storytelling multimodal untuk pariwisata berkelanjutan.
 
 Fokus hanya pada:
 {destination}
 
-ATURAN:
-- Gunakan Bahasa Indonesia formal akademik
+ATURAN SANGAT PENTING:
+- Gunakan HANYA informasi yang muncul pada storytelling
+- DILARANG menambahkan konsep baru yang tidak ada pada storytelling
+- Jangan menambahkan:
+  - infrastruktur
+  - promosi
+  - strategi umum
+  - ekonomi
+  - fasilitas
+  jika tidak disebut dalam storytelling
+- Analisis harus grounded pada narasi wisata
+- Gunakan gaya akademik formal
 - Output hanya SATU paragraf
-- Jangan gunakan bullet
-- Jangan gunakan numbering
-- Jangan membuat rekomendasi poin
-- Fokus pada reasoning pengambilan keputusan
-- Gunakan storytelling sebagai dasar analisis
-- Narasi harus mencerminkan analisis DSS
-- Jangan mengulang storytelling secara penuh
-- Jangan menyebut destinasi lain
+- Jangan bullet
+- Jangan numbering
+- Jangan mengulang storytelling sepenuhnya
+- Fokus pada interpretasi DSS dari pengalaman wisata
+- Narasi harus terasa natural dan manusiawi
 """
 
-        user_prompt = f"""
-STORYTELLING MULTIMODAL:
+    user_prompt = f"""
+STORYTELLING:
 {storytelling}
 
 TUGAS:
-Berdasarkan storytelling tersebut, buat satu paragraf hasil Agentic DSS yang menjelaskan pengambilan keputusan strategis untuk pengembangan pariwisata berkelanjutan pada destinasi tersebut.
+Buat satu paragraf hasil Agentic DSS berdasarkan storytelling tersebut.
+
+ATURAN:
+- Gunakan elemen yang muncul dalam storytelling
+- Interpretasikan pengalaman wisata menjadi pengambilan keputusan pariwisata
+- Jangan membuat rekomendasi generik
+- Jangan menambahkan konsep yang tidak ada
+- Fokus pada suasana, pengalaman wisatawan, kondisi alam, dan makna wisata
 """
 
-        result = call_llm(system_prompt, user_prompt)
+    result = call_llm(system_prompt, user_prompt)
 
-        result = result.replace("\n", " ")
-        result = " ".join(result.split())
+    result = result.replace("\n", " ")
+    result = " ".join(result.split())
 
-        return result
+    return result
 
 
 # =====================================================
