@@ -247,11 +247,11 @@ textarea {
 
     background: rgba(15,23,42,0.55);
 
-    border: 1px dashed rgba(56,189,248,0.55);
+    border: 2px dashed rgba(56,189,248,0.55);
 
     border-radius: 20px;
 
-    padding: 18px;
+    padding: 36px;
 
     box-shadow:
         0 0 18px rgba(59,130,246,0.08);
@@ -317,6 +317,7 @@ div[data-baseweb="select"] {
     border-radius: 18px;
 
     height: 68px;
+    margin-top:-50px;
 
     width: 100%;
 
@@ -454,13 +455,13 @@ SECTION TITLE
 
 .section-title {
 
-    font-size: 22px;
+    font-size: 20px;
 
     font-weight: 700;
 
     color: #E2E8F0;
 
-    margin-bottom: 15px;
+    font-family: raleway;
 }
 
 /* =========================================
