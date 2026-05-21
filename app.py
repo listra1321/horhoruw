@@ -317,11 +317,11 @@ div[data-baseweb="select"] {
     border-radius: 18px;
 
     height: 68px;
-    margin-top:-50px;
+    margin-top:-30px;
 
     width: 100%;
 
-    font-size: 22px;
+    font-size: 32px;
 
     font-weight: 700;
 
