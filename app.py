@@ -223,6 +223,21 @@ div[data-baseweb="select"] {
     display: none;
 }
 
+/* HIDE STREAMLIT HEADER */
+header[data-testid="stHeader"]{
+    display: none;
+}
+
+/* HIDE TOOLBAR */
+[data-testid="stToolbar"]{
+    display: none;
+}
+
+/* HIDE HAMBURGER */
+#MainMenu{
+    visibility: hidden;
+}
+
 footer {
     visibility: hidden;
 }
@@ -531,7 +546,7 @@ if generate:
         # =========================
         # MULTI-AGENT PROCESS
         # =========================
-        with st.spinner("🤖 Menghasilkan storytelling dan kebijakan..."):
+        with st.spinner("🤖 Menghasilkan storytelling dan pengambilan keputusan..."):
             result = orch.run(text, caption, destinasi)
             
         
