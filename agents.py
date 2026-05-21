@@ -141,7 +141,15 @@ ATURAN SANGAT PENTING:
 - Jangan numbering
 - Jangan mengulang storytelling sepenuhnya
 - Fokus pada interpretasi DSS dari pengalaman wisata
-- Narasi harus terasa natural dan manusiawi
+- Gunakan gaya akademik yang natural dan reflektif
+- Hindari bahasa yang terlalu formal seperti AI template
+- Hindari penggunaan kalimat:
+  "oleh karena itu"
+  "sehingga"
+  "dapat disimpulkan"
+  "hal ini menunjukkan bahwa"
+- Gunakan transisi yang lebih alami dan manusiawi
+- Narasi harus terasa seperti hasil analisis peneliti
 - DSS harus menjelaskan:
   - karakteristik destinasi,
   - arah pengelolaan,
@@ -164,6 +172,9 @@ ATURAN:
 - Jelaskan keputusan atau arah pengelolaan destinasi secara natural
 - Fokus pada interpretasi strategis ekowisata
 - Gunakan elemen yang muncul pada storytelling sebagai dasar analisis
+- Gunakan bahasa yang lebih natural dan tidak kaku
+- Hindari pola kalimat generik khas AI
+- Gunakan gaya analisis reflektif seperti peneliti manusia
 """
 
         result = call_llm(system_prompt, user_prompt)
