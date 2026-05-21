@@ -156,7 +156,8 @@ SUBTITLE
 img {
 
     animation: floating 4s ease-in-out infinite;
-    margin-left:200px;
+    position:relative;
+    left:100px;
 }
 
 
