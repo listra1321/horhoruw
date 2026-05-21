@@ -118,7 +118,7 @@ TITLE
 
 .hero-title {
 
-    font-size: 58px;
+    font-size: 48px;
 
     font-weight: 800;
 
@@ -277,7 +277,7 @@ div[data-baseweb="select"] {
 /* Neon Button */
 .stButton button {
 
-    width: 100%;
+    width: 420px;
 
     background: linear-gradient(
         90deg,
@@ -397,21 +397,16 @@ GLASS CARD
 .glass-card {
 
     background:
-        rgba(8,15,40,0.45);
-
-    border:
-        1px solid rgba(0,212,255,0.28);
-
-    border-radius: 22px;
-
-    padding: 24px;
-
-    margin-bottom: 24px;
+        linear-gradient(
+            135deg,
+            rgba(15,23,42,0.72),
+            rgba(30,41,59,0.35)
+        );
 
     backdrop-filter: blur(18px);
 
     box-shadow:
-        0 0 25px rgba(0,212,255,0.08);
+        0 8px 32px rgba(0,0,0,0.35);
 }
 
 /* =========================================
@@ -449,6 +444,7 @@ textarea {
         0 0 25px rgba(168,85,247,0.18);
 
     font-size: 18px !important;
+    padding: 20px !important;
 }
 
 /* =========================================
@@ -478,6 +474,11 @@ UPLOAD BOX
 
     background:
         rgba(15,23,42,0.35);
+}
+
+[data-testid="stFileUploader"] small {
+
+    display: none;
 }
 
 /* =========================================
@@ -866,7 +867,7 @@ st.markdown("</div>", unsafe_allow_html=True)
 # 2 COLUMN
 # =====================================================
 
-col1, col2 = st.columns(2)
+col1, col2 = st.columns([1.2, 1])
 
 # =====================================================
 # UPLOAD IMAGE
@@ -921,7 +922,7 @@ st.markdown("<br>", unsafe_allow_html=True)
 
 generate = st.button(
     "🧠 Generate Storytelling & Agentic DSS",
-    use_container_width=True
+    use_container_width=False
 )
 
 if generate:
