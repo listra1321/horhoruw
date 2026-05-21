@@ -282,6 +282,21 @@ div[data-baseweb="select"] {
         0 0 18px rgba(59,130,246,0.08);
 }
 
+/* destinasi */
+[data-testid="stselectbox"] {
+
+    background: rgba(15,23,42,0.55);
+
+    border: 1px dashed rgba(56,189,248,0.55);
+
+    border-radius: 20px;
+
+    padding: 18px;
+
+    box-shadow:
+        0 0 18px rgba(59,130,246,0.08);
+}
+
 /* Neon Button */
 .stButton button {
 
