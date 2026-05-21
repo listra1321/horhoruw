@@ -871,7 +871,7 @@ st.markdown("""
 <div class='glass-card'>
 <div class='section-title'>
 📝 Masukkan Teks Wisata
-</div>
+
 """, unsafe_allow_html=True)
 
 text = st.text_area(
@@ -879,7 +879,7 @@ text = st.text_area(
     placeholder="Jelaskan destinasi, pengalaman, atau topik wisata yang ingin diceritakan...",
     height=170
 )
-
+</div>
 st.markdown("</div>", unsafe_allow_html=True)
 
 # =====================================================
