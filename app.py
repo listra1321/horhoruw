@@ -120,7 +120,7 @@ TITLE
 
     font-size: 30px;
 
-    font-weight: 400;
+    font-weight: 700;
 
     line-height: 1.15;
 
@@ -152,7 +152,7 @@ SUBTITLE
 
     color: #CBD5E1;
 
-    max-width: 450px;
+    max-width: 750px;
 }
 
 img {
