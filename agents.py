@@ -118,53 +118,53 @@ class DSSAgent:
 
     def run(self, storytelling, destination):
 
-    system_prompt = f"""
-Anda adalah Agentic Decision Support System (DSS) untuk pariwisata berkelanjutan.
-
-Fokus hanya pada:
-{destination}
-
-ATURAN PENTING:
-- Gunakan HANYA informasi yang muncul pada storytelling
-- Jangan menambahkan konsep baru yang tidak ada
-- Output hanya SATU paragraf
-- Jangan bullet
-- Jangan numbering
-- Jangan mengulang storytelling
-- Jangan menjadi narasi wisata lagi
-- Fokus pada reasoning pengambilan keputusan
-- Hasil harus berupa interpretasi strategis destinasi
-- Gunakan gaya akademik formal
-- DSS harus menjelaskan:
-  - karakteristik destinasi,
-  - arah pengelolaan,
-  - implikasi pengembangan wisata,
-  berdasarkan storytelling
-"""
-
-    user_prompt = f"""
-STORYTELLING:
-{storytelling}
-
-TUGAS:
-Buat satu paragraf hasil Agentic DSS berdasarkan storytelling tersebut.
-
-ATURAN:
-- Jangan menceritakan ulang storytelling
-- Jangan membuat rekomendasi poin
-- Jangan membuat promosi wisata
-- Gunakan storytelling sebagai dasar reasoning
-- Jelaskan keputusan atau arah pengelolaan destinasi secara natural
-- Fokus pada interpretasi strategis ekowisata
-- Gunakan elemen yang muncul pada storytelling sebagai dasar analisis
-"""
-
-    result = call_llm(system_prompt, user_prompt)
-
-    result = result.replace("\n", " ")
-    result = " ".join(result.split())
-
-    return result
+        system_prompt = f"""
+    Anda adalah Agentic Decision Support System (DSS) untuk pariwisata berkelanjutan.
+    
+    Fokus hanya pada:
+    {destination}
+    
+    ATURAN PENTING:
+    - Gunakan HANYA informasi yang muncul pada storytelling
+    - Jangan menambahkan konsep baru yang tidak ada
+    - Output hanya SATU paragraf
+    - Jangan bullet
+    - Jangan numbering
+    - Jangan mengulang storytelling
+    - Jangan menjadi narasi wisata lagi
+    - Fokus pada reasoning pengambilan keputusan
+    - Hasil harus berupa interpretasi strategis destinasi
+    - Gunakan gaya akademik formal
+    - DSS harus menjelaskan:
+      - karakteristik destinasi,
+      - arah pengelolaan,
+      - implikasi pengembangan wisata,
+      berdasarkan storytelling
+    """
+    
+        user_prompt = f"""
+    STORYTELLING:
+    {storytelling}
+    
+    TUGAS:
+    Buat satu paragraf hasil Agentic DSS berdasarkan storytelling tersebut.
+    
+    ATURAN:
+    - Jangan menceritakan ulang storytelling
+    - Jangan membuat rekomendasi poin
+    - Jangan membuat promosi wisata
+    - Gunakan storytelling sebagai dasar reasoning
+    - Jelaskan keputusan atau arah pengelolaan destinasi secara natural
+    - Fokus pada interpretasi strategis ekowisata
+    - Gunakan elemen yang muncul pada storytelling sebagai dasar analisis
+    """
+    
+        result = call_llm(system_prompt, user_prompt)
+    
+        result = result.replace("\n", " ")
+        result = " ".join(result.split())
+    
+        return result
 
 
 # =====================================================
