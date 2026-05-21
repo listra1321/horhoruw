@@ -906,7 +906,6 @@ with col2:
 # =====================================================
 # TEXT INPUT
 # =====================================================
-st.divider()
 st.markdown("""
 <div class='section-title'>
 📝 Masukkan Teks Wisata
