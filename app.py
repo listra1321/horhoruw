@@ -235,6 +235,14 @@ textarea {
 
     font-size: 16px !important;
 
+    min-height: 170px !important;
+
+    padding: 24px !important;
+
+    font-size: 18px !important;
+
+    line-height: 1.8 !important;
+
     box-shadow:
         0 0 18px rgba(59,130,246,0.12);
 
@@ -277,13 +285,12 @@ div[data-baseweb="select"] {
 /* Neon Button */
 .stButton button {
 
-    width: 420px;
-
-    background: linear-gradient(
-        90deg,
-        #8B5CF6,
-        #06B6D4
-    );
+    background:
+        linear-gradient(
+            90deg,
+            #8B5CF6,
+            #06B6D4
+        );
 
     color: white;
 
@@ -291,16 +298,18 @@ div[data-baseweb="select"] {
 
     border-radius: 18px;
 
-    padding: 18px;
+    height: 68px;
 
-    font-size: 18px;
+    width: 100%;
+
+    font-size: 22px;
 
     font-weight: 700;
 
     box-shadow:
-        0 0 20px rgba(139,92,246,0.45);
+        0 0 35px rgba(139,92,246,0.35);
 
-    transition: 0.3s;
+    transition: 0.3s ease;
 }
 
 .stButton button:hover {
@@ -399,14 +408,23 @@ GLASS CARD
     background:
         linear-gradient(
             135deg,
-            rgba(15,23,42,0.72),
-            rgba(30,41,59,0.35)
+            rgba(10,15,35,0.82),
+            rgba(20,30,60,0.45)
         );
 
-    backdrop-filter: blur(18px);
+    border:
+        1px solid rgba(255,255,255,0.08);
+
+    border-radius: 28px;
+
+    padding: 28px;
+
+    margin-bottom: 30px;
+
+    backdrop-filter: blur(22px);
 
     box-shadow:
-        0 8px 32px rgba(0,0,0,0.35);
+        0 10px 40px rgba(0,0,0,0.35);
 }
 
 /* =========================================
@@ -846,7 +864,7 @@ with col2:
 # generate = st.button("🧠 Generate Storytelling & Agentic DSS")
 
 # =====================================================
-# INPUT TEXT
+# TEXT INPUT
 # =====================================================
 
 st.markdown("""
@@ -858,25 +876,27 @@ st.markdown("""
 
 text = st.text_area(
     "",
-    height=140
+    placeholder="Jelaskan destinasi, pengalaman, atau topik wisata yang ingin diceritakan...",
+    height=170
 )
 
 st.markdown("</div>", unsafe_allow_html=True)
 
 # =====================================================
-# 2 COLUMN
+# BIG CONTAINER
 # =====================================================
+
+st.markdown("<div class='glass-card'>", unsafe_allow_html=True)
 
 col1, col2 = st.columns([1.2, 1])
 
 # =====================================================
-# UPLOAD IMAGE
+# UPLOAD
 # =====================================================
 
 with col1:
 
     st.markdown("""
-    <div class='glass-card'>
     <div class='section-title'>
     🖼️ Upload Gambar
     </div>
@@ -887,8 +907,6 @@ with col1:
         type=["jpg", "jpeg", "png", "webp"]
     )
 
-    st.markdown("</div>", unsafe_allow_html=True)
-
 # =====================================================
 # DESTINATION
 # =====================================================
@@ -896,7 +914,6 @@ with col1:
 with col2:
 
     st.markdown("""
-    <div class='glass-card'>
     <div class='section-title'>
     📍 Pilih Destinasi Wisata
     </div>
@@ -912,7 +929,7 @@ with col2:
         ]
     )
 
-    st.markdown("</div>", unsafe_allow_html=True)
+st.markdown("</div>", unsafe_allow_html=True)
 
 # =====================================================
 # BUTTON
@@ -920,10 +937,14 @@ with col2:
 
 st.markdown("<br>", unsafe_allow_html=True)
 
-generate = st.button(
-    "🧠 Generate Storytelling & Agentic DSS",
-    use_container_width=False
-)
+col_btn1, col_btn2, col_btn3 = st.columns([1.5, 2, 1.5])
+
+with col_btn2:
+
+    generate = st.button(
+        "🧠 Generate Storytelling & Agentic DSS",
+        use_container_width=True
+    )
 
 if generate:
 
