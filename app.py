@@ -283,7 +283,7 @@ div[data-baseweb="select"] {
 }
 
 /* destinasi */
-[data-testid="stselectbox"] {
+[data-testid="stSelectbox"] {
 
     background: rgba(15,23,42,0.55);
 
