@@ -405,7 +405,7 @@ FLOATING ANIMATION
 
     width: 320px;
     height: 320px;
-    margin-left: 250px;
+    left: 250px;
 
     border-radius: 50%;
 
