@@ -48,6 +48,48 @@ ANIMATION
     }
 }
 
+.stApp::before {
+
+    content: "";
+
+    position: fixed;
+
+    width: 500px;
+    height: 500px;
+
+    background: rgba(16, 185, 129, 0.15);
+
+    border-radius: 50%;
+
+    top: -100px;
+    right: -100px;
+
+    filter: blur(120px);
+
+    z-index: -1;
+}
+
+.stApp::after {
+
+    content: "";
+
+    position: fixed;
+
+    width: 400px;
+    height: 400px;
+
+    background: rgba(59, 130, 246, 0.12);
+
+    border-radius: 50%;
+
+    bottom: -100px;
+    left: -100px;
+
+    filter: blur(120px);
+
+    z-index: -1;
+}
+
 /* Main Container */
 .main .block-container {
     padding-top: 2rem;
