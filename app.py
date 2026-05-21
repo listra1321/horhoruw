@@ -157,7 +157,7 @@ img {
 
     animation: floating 4s ease-in-out infinite;
     position:relative;
-    left:100px;
+    left:80px;
 }
 
 
@@ -234,10 +234,6 @@ textarea {
     padding: 24px !important;
 
     font-size: 16px !important;
-
-    min-height: 50px !important;
-
-    line-height: 1.8 !important;
 
     box-shadow:
         0 0 18px rgba(59,130,246,0.12);
