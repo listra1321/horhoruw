@@ -325,7 +325,7 @@ st.markdown("""
 Integrasi storytelling multimodal berbasis Large Language Models untuk mendukung pengambilan keputusan pariwisata.
 </div>
 """, unsafe_allow_html=True)
-st.markdown("<div class='custom-card'>", unsafe_allow_html=True)
+
 text = st.text_area("📝 Masukkan teks wisata")
 
 image_file = st.file_uploader("📷 Upload gambar")
@@ -358,7 +358,7 @@ orch = AgentOrchestrator()
 #if st.button("🧠 Generate Storytelling & Agentic DSS"):
 generate = st.button("🧠 Generate Storytelling & Agentic DSS")
 
-st.markdown("</div>", unsafe_allow_html=True)
+
 
 if generate:
 
