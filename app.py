@@ -14,7 +14,38 @@ st.markdown("""
 
 /* Background */
 .stApp {
-    #background-color: #F5F7FA;
+
+    background: linear-gradient(
+        -45deg,
+        #F8FAFC,
+        #E0F2FE,
+        #DCFCE7,
+        #F1F5F9
+    );
+
+    background-size: 400% 400%;
+
+    animation: gradientMove 15s ease infinite;
+
+}
+
+/* =========================================
+ANIMATION
+========================================= */
+
+@keyframes gradientMove {
+
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
 /* Main Container */
