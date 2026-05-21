@@ -144,38 +144,23 @@ Fokus hanya pada:
 
 ATURAN SANGAT PENTING:
 ATURAN:
-- DILARANG menambahkan konsep baru yang tidak ada pada storytelling
-- Jangan menambahkan:
-  - infrastruktur
-  - promosi
-  - strategi umum
-  - ekonomi
-  - fasilitas
-  jika tidak disebut dalam storytelling
-- Analisis harus grounded pada narasi wisata
-- Gunakan gaya akademik formal
+- Gunakan storytelling sebagai dasar utama analisis
+- Fokus pada pengalaman wisata yang muncul dalam storytelling
+- Jelaskan karakter pengalaman wisata dan hal penting yang dapat dipahami dari pengalaman tersebut
+- Hindari pembahasan yang tidak relevan dengan pengalaman wisata
+- Jangan membuat promosi wisata
+- Jangan mengulang storytelling secara penuh
 - Output hanya SATU paragraf
-- Jangan bullet
-- Jangan numbering
-- Jangan mengulang storytelling sepenuhnya
-- Fokus pada interpretasi DSS dari pengalaman wisata dan implikiasi pengelolaannya
-- Gunakan gaya akademik yang natural dan reflektif
-- Hindari bahasa yang terlalu formal seperti AI template
-- Hindari connector AI seperti:
+- Jangan menggunakan bullet atau numbering
+- Gunakan Bahasa Indonesia yang natural dan reflektif
+- Gunakan gaya analisis seperti peneliti manusia
+- Hindari bahasa yang terlalu formal atau terdengar seperti template AI
+- Hindari connector seperti:
   "oleh karena itu"
-  "namun"
   "dengan demikian"
-  "sehingga"
   "dapat disimpulkan"
-  "hal ini menunjukkan bahwa"
-- Gunakan transisi yang lebih alami dan manusiawi
-- Narasi harus terasa seperti hasil analisis peneliti
-- DSS harus menjelaskan:
-  - karakteristik destinasi,
-  - arah pengelolaan,
-  - implikasi pengembangan wisata,
-  berdasarkan storytelling
-- Jangan terdengar seperti laporan akademik generik
+- Gunakan transisi yang lebih alami dan kontekstual
+- Narasi harus terasa seperti interpretasi pengalaman wisata, bukan laporan akademik generik
 """
 
         user_prompt = f"""
