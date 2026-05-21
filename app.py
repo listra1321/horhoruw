@@ -193,35 +193,82 @@ def validate_destination(text, caption, destinasi):
     text_lower = text.lower()
     caption_lower = caption.lower()
 
-    # keyword tiap destinasi
-    borobudur_keywords = ["borobudur", "candi", "stupa", "temple"]
-    toba_keywords = ["toba", "danau", "lake", "water", "mountain"]
+    combined = text_lower + " " + caption_lower
 
-    # deteksi dari teks
-    text_is_borobudur = any(k in text_lower for k in borobudur_keywords)
-    text_is_toba = any(k in text_lower for k in toba_keywords)
+    # =====================================================
+    # KEYWORDS
+    # =====================================================
 
-    # deteksi dari gambar (caption)
-    caption_is_borobudur = any(k in caption_lower for k in borobudur_keywords)
-    caption_is_toba = any(k in caption_lower for k in toba_keywords)
+    destination_keywords = {
 
-    # =========================
-    # DETEKSI KONFLIK
-    # =========================
-    if text_is_borobudur and caption_is_toba:
+        "Candi Borobudur": [
+            "borobudur",
+            "candi",
+            "stupa",
+            "temple"
+        ],
+
+        "Danau Toba": [
+            "toba",
+            "danau",
+            "lake",
+            "water"
+        ],
+
+        "Riam Berawant": [
+            "riam",
+            "berawant",
+            "air terjun",
+            "sungai",
+            "arus"
+        ],
+
+        "Sepadang Hill": [
+            "sepadang",
+            "hill",
+            "bukit",
+            "perbukitan"
+        ]
+    }
+
+    # =====================================================
+    # DETEKSI SEMUA DESTINASI YANG MUNCUL
+    # =====================================================
+
+    detected_destinations = []
+
+    for dest, keywords in destination_keywords.items():
+
+        if any(k in combined for k in keywords):
+            detected_destinations.append(dest)
+
+    print("DETECTED:", detected_destinations)
+
+    # =====================================================
+    # JIKA TIDAK ADA YANG TERDETEKSI
+    # =====================================================
+
+    if len(detected_destinations) == 0:
         return False
 
-    if text_is_toba and caption_is_borobudur:
+    # =====================================================
+    # JIKA DESTINASI PILIHAN TIDAK SESUAI
+    # =====================================================
+
+    if destinasi not in detected_destinations:
         return False
 
-    # =========================
-    # VALIDASI SESUAI PILIHAN
-    # =========================
-    if destinasi == "Candi Borobudur":
-        return text_is_borobudur or caption_is_borobudur
+    # =====================================================
+    # JIKA ADA KONFLIK MULTI DESTINASI
+    # =====================================================
 
-    elif destinasi == "Danau Toba":
-        return text_is_toba or caption_is_toba
+    if len(detected_destinations) > 1:
+
+        # contoh:
+        # teks borobudur
+        # gambar danau toba
+
+        return False
 
     return True
 
