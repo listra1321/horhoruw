@@ -373,8 +373,8 @@ FLOATING ANIMATION
 
     position: absolute;
 
-    width: 320px;
-    height: 320px;
+    width: 620px;
+    height: 620px;
 
     border-radius: 50%;
 
