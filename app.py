@@ -1,16 +1,112 @@
 import streamlit as st
+st.set_page_config(
+    page_title="Agentic DSS Pariwisata",
+    page_icon="🌱",
+    layout="wide"
+)
+
+# =========================
+# CUSTOM CSS
+# =========================
+
+st.markdown("""
+<style>
+
+/* Background */
+.stApp {
+    background-color: #F5F7FA;
+}
+
+/* Main Container */
+.main .block-container {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    padding-left: 3rem;
+    padding-right: 3rem;
+}
+
+.stButton {
+    width: 100%;
+}
+
+.stButton button {
+    width: 100%;
+}
+
+.result-box {
+    line-height: 1.8;
+}
+
+/* Title */
+.main-title {
+    font-size: 42px;
+    font-weight: 800;
+    color: #1E293B;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    font-size: 18px;
+    color: #64748B;
+    margin-bottom: 35px;
+}
+
+/* Card Style */
+.custom-card {
+    background: white;
+    padding: 25px;
+    border-radius: 18px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    margin-bottom: 25px;
+}
+
+/* Button */
+.stButton>button {
+    background: linear-gradient(90deg, #10B981, #059669);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.stButton>button:hover {
+    background: linear-gradient(90deg, #059669, #047857);
+    transform: scale(1.02);
+}
+
+/* Text Area */
+textarea {
+    border-radius: 12px !important;
+}
+
+/* Upload Box */
+[data-testid="stFileUploader"] {
+    background: white;
+    padding: 15px;
+    border-radius: 14px;
+    border: 1px solid #E2E8F0;
+}
+
+/* Result Section */
+.result-box {
+    background: white;
+    padding: 25px;
+    border-radius: 18px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    margin-top: 20px;
+}
+
+</style>
+""", unsafe_allow_html=True)
 from PIL import Image
 from orchestrator import AgentOrchestrator
 from caption_lookup import CaptionLookup
 import os
 
 OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY") or st.secrets["OPENROUTER_API_KEY"]
-
-st.set_page_config(
-    page_title="Agentic DSS Ekowisata | Listra Horhoruw",
-    page_icon="🌱",
-    layout="wide"
-)
 
 def map_sentiment_to_emoji(label):
     label = label.lower()
@@ -216,11 +312,26 @@ def validate_destination(text, caption, destinasi):
 # =========================
 # UI
 # =========================
-st.title(
-    "🌿 Storytelling Multimodal untuk Agentic Decision Support System Pariwisata"
-)
+# st.title(
+#     "🌿 Storytelling Multimodal untuk Agentic Decision Support System Pariwisata"
+# )
 
-text = st.text_area("📝 Masukkan teks wisata")
+st.markdown("""
+<div class='main-title'>
+🌿 Storytelling Multimodal untuk Agentic Decision Support System Pariwisata
+</div>
+
+<div class='subtitle'>
+Integrasi storytelling multimodal berbasis Large Language Models untuk mendukung pengambilan keputusan pariwisata.
+</div>
+""", unsafe_allow_html=True)
+st.markdown("<div class='custom-card'>", unsafe_allow_html=True)
+# text = st.text_area("📝 Masukkan teks wisata")
+text = st.text_area(
+    "📝 Masukkan teks wisata",
+    height=180,
+    spellcheck=False
+)
 
 image_file = st.file_uploader("📷 Upload gambar")
 
@@ -249,7 +360,12 @@ orch = AgentOrchestrator()
 # =========================
 # GENERATE
 # =========================
-if st.button("🧠 Generate Storytelling & Agentic DSS"):
+#if st.button("🧠 Generate Storytelling & Agentic DSS"):
+generate = st.button("🧠 Generate Storytelling & Agentic DSS")
+
+st.markdown("</div>", unsafe_allow_html=True)
+
+if generate:
 
     if text and image_file:
 
@@ -285,11 +401,7 @@ if st.button("🧠 Generate Storytelling & Agentic DSS"):
         # =========================
         # VALIDASI DESTINASI
         # =========================
-        is_valid = validate_destination(text, caption, destinasi)
-
-        if not is_valid:
-            st.error("❌ Maaf, input tidak sesuai dengan destinasi yang dipilih.")
-            st.stop()
+    
         
 
         # =========================
@@ -297,6 +409,8 @@ if st.button("🧠 Generate Storytelling & Agentic DSS"):
         # =========================
         with st.spinner("🤖 Menghasilkan storytelling dan kebijakan..."):
             result = orch.run(text, caption, destinasi)
+            
+        
 
         # =====================================================
         # OUTPUT
@@ -317,7 +431,7 @@ if st.button("🧠 Generate Storytelling & Agentic DSS"):
         # =====================================================
         # STORYTELLING
         # =====================================================
-        
+        st.markdown("<div class='result-box'>", unsafe_allow_html=True)
         st.subheader("📄 Storytelling Wisata")
         
         st.write(f"{emoji} {story.strip()}")
@@ -339,6 +453,9 @@ if st.button("🧠 Generate Storytelling & Agentic DSS"):
         st.caption(
             "Hasil reasoning Agentic Decision Support System berbasis storytelling multimodal."
         )
+        st.markdown("</div>", unsafe_allow_html=True)
+        
+        
 
  
         
