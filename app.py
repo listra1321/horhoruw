@@ -988,10 +988,10 @@ with col_btn2:
 
 if generate:
 
-    if text and image_file:
+    if text and uploaded_file:
 
         # tampilkan gambar (TETAP ADA)
-        image = Image.open(image_file)
+        image = Image.open(uploaded_file)
         st.image(image, width=240)
 
         # =========================
