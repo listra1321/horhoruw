@@ -144,28 +144,24 @@ Fokus hanya pada:
 
 ATURAN SANGAT PENTING:
 ATURAN:
-- Gunakan hanya informasi yang muncul pada storytelling
-- DILARANG menambahkan konsep baru yang tidak terdapat pada storytelling
-- Jangan menambahkan istilah seperti:
+- DILARANG menambahkan konsep baru yang tidak ada pada storytelling
+- Jangan menambahkan:
   - infrastruktur
-  - fasilitas
   - promosi
   - strategi umum
   - ekonomi
-  kecuali benar-benar muncul pada storytelling
-- Analisis harus tetap grounded pada pengalaman wisata dan narasi yang diberikan
-- Fokus pada interpretasi DSS terhadap pengalaman wisata dan karakter destinasi
-- DSS harus menjelaskan:
-  - karakteristik pengalaman wisata,
-  - suasana dan kondisi destinasi,
-  - serta hal penting yang dapat dipahami dari pengalaman tersebut
-- Jangan mengulang storytelling secara penuh
+  - fasilitas
+  jika tidak disebut dalam storytelling
+- Analisis harus grounded pada narasi wisata
+- Gunakan gaya akademik formal
 - Output hanya SATU paragraf
-- Jangan menggunakan bullet atau numbering
-- Gunakan Bahasa Indonesia yang natural, reflektif, dan mudah dipahami
-- Gunakan gaya analisis seperti peneliti manusia, bukan template AI
-- Hindari bahasa yang terlalu formal atau terdengar generik
-- Hindari connector khas AI seperti:
+- Jangan bullet
+- Jangan numbering
+- Jangan mengulang storytelling sepenuhnya
+- Fokus pada interpretasi DSS dari pengalaman wisata dan implikiasi pengelolaannya
+- Gunakan gaya akademik yang natural dan reflektif
+- Hindari bahasa yang terlalu formal seperti AI template
+- Hindari connector AI seperti:
   "oleh karena itu"
   "namun"
   "dengan demikian"
@@ -173,7 +169,13 @@ ATURAN:
   "dapat disimpulkan"
   "hal ini menunjukkan bahwa"
 - Gunakan transisi yang lebih alami dan manusiawi
-- Narasi harus terasa sebagai hasil interpretasi yang kontekstual, bukan laporan akademik generik
+- Narasi harus terasa seperti hasil analisis peneliti
+- DSS harus menjelaskan:
+  - karakteristik destinasi,
+  - arah pengelolaan,
+  - implikasi pengembangan wisata,
+  berdasarkan storytelling
+- Jangan terdengar seperti laporan akademik generik
 """
 
         user_prompt = f"""
