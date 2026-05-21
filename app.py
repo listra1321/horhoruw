@@ -19,6 +19,22 @@ st.markdown("""
         linear-gradient(135deg, #020617, #0F172A);
 
     color: white;
+    animation: bgMove 15s ease infinite;
+}
+
+@keyframes bgMove {
+
+    0% {
+        background-position: left;
+    }
+
+    50% {
+        background-position: right;
+    }
+
+    100% {
+        background-position: left;
+    }
 }
 
 /* Main Container */
@@ -72,7 +88,8 @@ st.markdown("""
 /* Title */
 .main-title {
 
-    font-size: 52px;
+    font-size: 48px;
+    line-height: 1.2;
 
     font-weight: 800;
 
@@ -89,10 +106,16 @@ st.markdown("""
     margin-bottom: 10px;
 }
 
+.main-title {
+
+    text-shadow:
+        0 0 25px rgba(168,85,247,0.35);
+}
+
 /* Subtitle */
 .subtitle {
 
-    font-size: 18px;
+    font-size: 20px;
 
     color: #CBD5E1;
 
@@ -108,13 +131,21 @@ label, p, div {
 /* Text Area */
 textarea {
 
-    background: rgba(15,23,42,0.7) !important;
+    background: rgba(15,23,42,0.85) !important;
 
-    border: 1px solid #334155 !important;
+    color: #F8FAFC !important;
 
-    color: white !important;
+    border: 1px solid rgba(56,189,248,0.35) !important;
 
     border-radius: 18px !important;
+
+    padding: 18px !important;
+
+    font-size: 16px !important;
+
+    box-shadow:
+        0 0 18px rgba(59,130,246,0.12);
+
 }
 
 /* Selectbox */
@@ -125,16 +156,30 @@ textarea {
     border-radius: 14px;
 }
 
+div[data-baseweb="select"] {
+
+    background: rgba(15,23,42,0.82) !important;
+
+    border: 1px solid rgba(56,189,248,0.25);
+
+    border-radius: 14px;
+
+    color: white !important;
+}
+
 /* Upload */
 [data-testid="stFileUploader"] {
 
-    background: rgba(15,23,42,0.6);
+    background: rgba(15,23,42,0.55);
 
-    border: 1px dashed #38BDF8;
+    border: 1px dashed rgba(56,189,248,0.55);
 
     border-radius: 20px;
 
-    padding: 20px;
+    padding: 18px;
+
+    box-shadow:
+        0 0 18px rgba(59,130,246,0.08);
 }
 
 /* Neon Button */
@@ -154,7 +199,7 @@ textarea {
 
     border-radius: 18px;
 
-    padding: 16px;
+    padding: 18px;
 
     font-size: 18px;
 
@@ -173,6 +218,15 @@ textarea {
     box-shadow:
         0 0 35px rgba(6,182,212,0.55);
 }
+
+[data-testid="collapsedControl"] {
+    display: none;
+}
+
+footer {
+    visibility: hidden;
+}
+
 
 </style>
 """, unsafe_allow_html=True)
