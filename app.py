@@ -439,7 +439,7 @@ SECTION TITLE
 
     color: #E2E8F0;
 
-    margin-bottom: 18px;
+    margin-bottom: 15px;
 }
 
 /* =========================================
@@ -868,7 +868,6 @@ with col2:
 # =====================================================
 
 st.markdown("""
-<div class='glass-card'>
 <div class='section-title'>
 📝 Masukkan Teks Wisata
 </div>
@@ -880,13 +879,11 @@ text = st.text_area(
     height=170
 )
 
-st.markdown("</div>", unsafe_allow_html=True)
+st.markdown("<br>", unsafe_allow_html=True)
 
 # =====================================================
-# BIG CONTAINER
+# 2 COLUMN LAYOUT
 # =====================================================
-
-st.markdown("<div class='glass-card'>", unsafe_allow_html=True)
 
 col1, col2 = st.columns([1.2, 1])
 
@@ -897,6 +894,7 @@ col1, col2 = st.columns([1.2, 1])
 with col1:
 
     st.markdown("""
+    <div class='glass-card'>
     <div class='section-title'>
     🖼️ Upload Gambar
     </div>
@@ -907,6 +905,8 @@ with col1:
         type=["jpg", "jpeg", "png", "webp"]
     )
 
+    st.markdown("</div>", unsafe_allow_html=True)
+
 # =====================================================
 # DESTINATION
 # =====================================================
@@ -914,6 +914,7 @@ with col1:
 with col2:
 
     st.markdown("""
+    <div class='glass-card'>
     <div class='section-title'>
     📍 Pilih Destinasi Wisata
     </div>
@@ -929,7 +930,7 @@ with col2:
         ]
     )
 
-st.markdown("</div>", unsafe_allow_html=True)
+    st.markdown("</div>", unsafe_allow_html=True)
 
 # =====================================================
 # BUTTON
@@ -937,7 +938,7 @@ st.markdown("</div>", unsafe_allow_html=True)
 
 st.markdown("<br>", unsafe_allow_html=True)
 
-col_btn1, col_btn2, col_btn3 = st.columns([1.5, 2, 1.5])
+col_btn1, col_btn2, col_btn3 = st.columns([1,2,1])
 
 with col_btn2:
 
