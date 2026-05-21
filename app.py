@@ -363,7 +363,7 @@ ROBOT IMAGE
 ========================================= */
 
 .robot-container img {
-    margin-left: 50px;
+    margin-left: 150px;
 
     filter:
         drop-shadow(0 0 25px rgba(168,85,247,0.45));
