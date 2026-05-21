@@ -85,6 +85,96 @@ st.markdown("""
     line-height: 1.9;
 }
 
+/* =========================================
+HERO SECTION
+========================================= */
+
+.hero-badge {
+
+    display: inline-block;
+
+    padding: 8px 18px;
+
+    border-radius: 999px;
+
+    background: rgba(168,85,247,0.18);
+
+    color: #C084FC;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    letter-spacing: 1px;
+
+    margin-bottom: 18px;
+
+    border: 1px solid rgba(168,85,247,0.35);
+}
+
+/* =========================================
+TITLE
+========================================= */
+
+.hero-title {
+
+    font-size: 58px;
+
+    font-weight: 800;
+
+    line-height: 1.15;
+
+    background: linear-gradient(
+        90deg,
+        #C084FC,
+        #38BDF8
+    );
+
+    -webkit-background-clip: text;
+
+    -webkit-text-fill-color: transparent;
+
+    margin-bottom: 24px;
+
+    text-shadow:
+        0 0 25px rgba(168,85,247,0.25);
+}
+
+/* =========================================
+SUBTITLE
+========================================= */
+
+.hero-subtitle {
+
+    font-size: 22px;
+
+    line-height: 1.8;
+
+    color: #CBD5E1;
+
+    max-width: 850px;
+}
+
+img {
+
+    animation: floating 4s ease-in-out infinite;
+}
+
+@keyframes floating {
+
+    0% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+}
+
 /* Title */
 .main-title {
 
@@ -445,15 +535,43 @@ def validate_destination(text, caption, destinasi):
 #     "🌱 Storytelling Multimodal untuk Agentic Decision Support System Pariwisata"
 # )
 
-st.markdown("""
-<div class='main-title'>
-🌱 Storytelling Multimodal untuk Agentic Decision Support System Pariwisata
-</div>
+# st.markdown("""
+# <div class='main-title'>
+# 🌱 Storytelling Multimodal untuk Agentic Decision Support System Pariwisata
+# </div>
 
-<div class='subtitle'>
-Integrasi storytelling multimodal berbasis Large Language Models untuk mendukung pengambilan keputusan pariwisata.
-</div>
-""", unsafe_allow_html=True)
+# <div class='subtitle'>
+# Integrasi storytelling multimodal berbasis Large Language Models untuk mendukung pengambilan keputusan pariwisata.
+# </div>
+# """, unsafe_allow_html=True)
+
+col1, col2 = st.columns([1, 2])
+
+with col1:
+
+    st.image(
+        "logo.png",
+        width=260
+    )
+
+with col2:
+
+    st.markdown("""
+    <div class='hero-badge'>
+        AI STORYTELLING ENGINE
+    </div>
+
+    <div class='hero-title'>
+        Storytelling Multimodal untuk <br>
+        Agentic Decision Support System Pariwisata
+    </div>
+
+    <div class='hero-subtitle'>
+        Integrasi storytelling multimodal berbasis Large Language Models 
+        untuk mendukung pengambilan keputusan pariwisata yang cerdas, 
+        adaptif, dan berbasis data.
+    </div>
+    """, unsafe_allow_html=True)
 
 text = st.text_area("📝 Masukkan teks wisata")
 
