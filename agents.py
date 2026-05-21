@@ -147,7 +147,7 @@ class DSSAgent:
     {storytelling}
     
     TUGAS:
-    Buat satu paragraf hasil Agentic DSS berdasarkan storytelling tersebut.
+    Buat satu paragraf hasil Agentic DSS berdasarkan storytelling tersebut dalam Bahasa Indonesia.
     
     ATURAN:
     - Jangan menceritakan ulang storytelling
