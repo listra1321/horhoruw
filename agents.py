@@ -84,6 +84,7 @@ ATURAN:
 - Emosi dan pengalaman wisata boleh tetap terasa natural
 - Gabungkan teks wisatawan dan visual gambar
 - Narasi harus natural dan imersif
+- Jangan terdengar seperti artikel AI
 - Jangan membuat bullet
 - Jangan membuat rekomendasi kebijakan
 - Jangan menggunakan numbering
@@ -100,6 +101,11 @@ ATURAN:
   "sehingga"
   "dapat disimpulkan"
   "hal ini menunjukkan bahwa"
+- Hindari kalimat terlalu sempurna dan terlalu formal
+- Pertahankan nuansa pengalaman manusia
+- Gunakan gaya narasi wisata yang natural
+- Jangan menggunakan kalimat promosi seperti "sangat direkomendasikan"
+- Jika ada pengalaman unik dari wisatawan, pertahankan maknanya secara natural
 - Fokus pada pengalaman wisata dan suasana destinasi
 """
 
@@ -152,10 +158,10 @@ ATURAN SANGAT PENTING:
 - Jangan bullet
 - Jangan numbering
 - Jangan mengulang storytelling sepenuhnya
-- Fokus pada interpretasi DSS dari pengalaman wisata
+- Fokus pada interpretasi DSS dari pengalaman wisata dan implikiasi pengelolaannya
 - Gunakan gaya akademik yang natural dan reflektif
 - Hindari bahasa yang terlalu formal seperti AI template
-- Hindari penggunaan kalimat:
+- Hindari connector AI seperti:
   "oleh karena itu"
   "namun"
   "dengan demikian"
@@ -169,6 +175,7 @@ ATURAN SANGAT PENTING:
   - arah pengelolaan,
   - implikasi pengembangan wisata,
   berdasarkan storytelling
+- Jangan terdengar seperti laporan akademik generik
 """
 
         user_prompt = f"""
