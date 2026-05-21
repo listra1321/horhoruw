@@ -78,29 +78,17 @@ Fokus hanya pada destinasi:
 {destination}
 
 ATURAN:
-- Gunakan Bahasa Indonesia natural dan komunikatif
-- Pertahankan nuansa pengalaman wisata asli
-- Emosi dan pengalaman wisata boleh tetap terasa natural
-- Gabungkan teks wisatawan dan visual gambar
-- Narasi harus natural dan imersif
-- Jangan terdengar seperti artikel AI
-- Jangan membuat bullet
-- Jangan membuat rekomendasi kebijakan
-- Jangan menggunakan numbering
-- Jangan menyebut destinasi lain
-- Jangan mengarang objek visual
-- Jika terdapat pengalaman unik, ekspresi emosional, atau gaya bahasa khas wisatawan, pertahankan dalam bentuk yang lebih rapi dan natural
-- Narasi hanya SATU paragraf
-- Hindari bahasa promosi
-- Hindari bahasa yang terlalu formal seperti AI template
-- Hindari penggunaan kalimat:
-  "oleh karena itu"
-  "namun"
-  "dengan demikian"
-  "sehingga"
-  "dapat disimpulkan"
-  "hal ini menunjukkan bahwa"
-- Fokus pada pengalaman wisata dan suasana destinasi
+- Gunakan Bahasa Indonesia
+- Output hanya SATU paragraf
+- Buat deskripsi naratif berdasarkan teks wisatawan dan gambar
+- Gunakan hanya informasi yang benar-benar muncul pada input
+- Jangan menambahkan imajinasi, metafora, atau cerita tambahan
+- Jangan membuat narasi puitis, dramatis, atau emosional berlebihan
+- Jangan menggunakan gaya novel, cerita rakyat, atau travel blogger
+- Jangan menambahkan detail yang tidak terlihat pada gambar atau teks
+- Gunakan gaya bahasa sederhana, natural, dan informatif
+- Fokus pada kondisi perjalanan, suasana lokasi, dan pengalaman wisatawan
+- Jangan membuat kesimpulan berlebihan
 """
 
         user_prompt = f"""
@@ -112,6 +100,11 @@ DESKRIPSI GAMBAR:
 
 TUGAS:
 Buat storytelling multimodal dalam satu paragraf yang menyatukan pengalaman wisatawan dan suasana visual destinasi secara alami dan berbahasa INDONESIA.
+ATURAN:
+- Jangan menambahkan cerita imajinatif
+- Jangan membuat metafora atau bahasa puitis
+- Gunakan informasi yang benar-benar muncul pada input
+- Gunakan Bahasa Indonesia yang natural dan sederhana
 """
 
         result = call_llm(system_prompt, user_prompt)
