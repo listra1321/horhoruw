@@ -119,7 +119,7 @@ class DSSAgent:
     def run(self, storytelling, destination):
 
         system_prompt = f"""
-Anda adalah Agentic Decision Support System (DSS) berbasis storytelling multimodal untuk pariwisata berkelanjutan.
+Anda adalah Agentic Decision Support System (DSS) untuk pariwisata berkelanjutan.
 
 Fokus hanya pada:
 {destination}
@@ -142,6 +142,11 @@ ATURAN SANGAT PENTING:
 - Jangan mengulang storytelling sepenuhnya
 - Fokus pada interpretasi DSS dari pengalaman wisata
 - Narasi harus terasa natural dan manusiawi
+- DSS harus menjelaskan:
+  - karakteristik destinasi,
+  - arah pengelolaan,
+  - implikasi pengembangan wisata,
+  berdasarkan storytelling
 """
 
         user_prompt = f"""
@@ -152,11 +157,13 @@ TUGAS:
 Buat satu paragraf hasil Agentic DSS berdasarkan storytelling tersebut.
 
 ATURAN:
-- Gunakan elemen yang muncul dalam storytelling
-- Interpretasikan pengalaman wisata menjadi pengambilan keputusan pariwisata
-- Jangan membuat rekomendasi generik
-- Jangan menambahkan konsep yang tidak ada
-- Fokus pada suasana, pengalaman wisatawan, kondisi alam, dan makna wisata
+- Jangan menceritakan ulang storytelling
+- Jangan membuat rekomendasi poin
+- Jangan membuat promosi wisata
+- Gunakan storytelling sebagai dasar reasoning
+- Jelaskan keputusan atau arah pengelolaan destinasi secara natural
+- Fokus pada interpretasi strategis ekowisata
+- Gunakan elemen yang muncul pada storytelling sebagai dasar analisis
 """
 
         result = call_llm(system_prompt, user_prompt)
