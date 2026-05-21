@@ -212,7 +212,6 @@ def generate_caption_blip(image):
 # LOAD CAPTION DATASET
 # =========================
 caption_db = CaptionLookup("data_caption.csv")
-caption_db = CaptionLookup("dataset_multimodal_add.xlsx")
 
 # =========================
 # HELPER
