@@ -68,62 +68,6 @@ def explain_with_lime(text):
     
     return exp
 
-def validate_destination(text, caption, destinasi):
-
-    text_lower = text.lower()
-    caption_lower = caption.lower()
-
-    # =====================================================
-    # KEYWORDS TIAP DESTINASI
-    # =====================================================
-
-    borobudur_keywords = [
-        "borobudur",
-        "candi",
-        "stupa",
-        "temple"
-    ]
-
-    toba_keywords = [
-        "toba",
-        "danau",
-        "lake",
-        "water"
-    ]
-
-    riam_keywords = [
-        "riam",
-        "berawant",
-        "sungai",
-        "air terjun",
-        "arus"
-    ]
-
-    sepadang_keywords = [
-        "sepadang",
-        "hill",
-        "bukit",
-        "perbukitan",
-        "alam"
-    ]
-
-    # =====================================================
-    # DETEKSI
-    # =====================================================
-
-    all_keywords = {
-        "Candi Borobudur": borobudur_keywords,
-        "Danau Toba": toba_keywords,
-        "Riam Berawant": riam_keywords,
-        "Sepadang Hill": sepadang_keywords
-    }
-
-    selected_keywords = all_keywords[destinasi]
-
-    combined = text_lower + " " + caption_lower
-
-    return any(k in combined for k in selected_keywords)
-
 # =========================
 # PASSWORD PROTECTION
 # =========================
@@ -185,9 +129,10 @@ def detect_destination(text):
     else:
         return "Destinasi Wisata"
 
-# =========================
-# VALIDASI DESTINASI (MULTIMODAL)
-# =========================
+# =====================================================
+# VALIDASI MULTIMODAL DESTINASI
+# =====================================================
+
 def validate_destination(text, caption, destinasi):
 
     text_lower = text.lower()
@@ -196,7 +141,7 @@ def validate_destination(text, caption, destinasi):
     combined = text_lower + " " + caption_lower
 
     # =====================================================
-    # KEYWORDS
+    # KEYWORDS DESTINASI
     # =====================================================
 
     destination_keywords = {
@@ -232,7 +177,7 @@ def validate_destination(text, caption, destinasi):
     }
 
     # =====================================================
-    # DETEKSI SEMUA DESTINASI YANG MUNCUL
+    # DETEKSI DESTINASI
     # =====================================================
 
     detected_destinations = []
@@ -242,32 +187,27 @@ def validate_destination(text, caption, destinasi):
         if any(k in combined for k in keywords):
             detected_destinations.append(dest)
 
-    print("DETECTED:", detected_destinations)
+    print("DETECTED DESTINATION:", detected_destinations)
 
     # =====================================================
-    # JIKA TIDAK ADA YANG TERDETEKSI
+    # TIDAK ADA YANG TERDETEKSI
     # =====================================================
 
     if len(detected_destinations) == 0:
         return False
 
     # =====================================================
-    # JIKA DESTINASI PILIHAN TIDAK SESUAI
+    # DESTINASI TIDAK SESUAI PILIHAN
     # =====================================================
 
     if destinasi not in detected_destinations:
         return False
 
     # =====================================================
-    # JIKA ADA KONFLIK MULTI DESTINASI
+    # KONFLIK MULTI DESTINASI
     # =====================================================
 
     if len(detected_destinations) > 1:
-
-        # contoh:
-        # teks borobudur
-        # gambar danau toba
-
         return False
 
     return True
