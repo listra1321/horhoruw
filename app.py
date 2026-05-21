@@ -107,7 +107,7 @@ HERO SECTION
 
     letter-spacing: 1px;
 
-    margin-bottom: 18px;
+    margin-bottom: 10px;
 
     border: 1px solid rgba(168,85,247,0.35);
 }
@@ -134,8 +134,6 @@ TITLE
 
     -webkit-text-fill-color: transparent;
 
-    margin-bottom: 24px;
-
     text-shadow:
         0 0 25px rgba(168,85,247,0.25);
 }
@@ -152,7 +150,7 @@ SUBTITLE
 
     color: #CBD5E1;
 
-    max-width: 750px;
+    max-width: 700px;
 }
 
 img {
