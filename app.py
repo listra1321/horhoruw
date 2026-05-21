@@ -326,12 +326,7 @@ Integrasi storytelling multimodal berbasis Large Language Models untuk mendukung
 </div>
 """, unsafe_allow_html=True)
 st.markdown("<div class='custom-card'>", unsafe_allow_html=True)
-# text = st.text_area("📝 Masukkan teks wisata")
-text = st.text_area(
-    "📝 Masukkan teks wisata",
-    height=180,
-    spellcheck=False
-)
+text = st.text_area("📝 Masukkan teks wisata")
 
 image_file = st.file_uploader("📷 Upload gambar")
 
