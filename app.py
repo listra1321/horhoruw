@@ -426,7 +426,7 @@ if generate:
         # =====================================================
         # STORYTELLING
         # =====================================================
-        st.markdown("<div class='custom-card'>", unsafe_allow_html=True)
+        st.markdown("<div class='result-box'>", unsafe_allow_html=True)
         st.subheader("📄 Storytelling Wisata")
         
         st.write(f"{emoji} {story.strip()}")
