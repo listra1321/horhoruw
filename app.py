@@ -212,6 +212,7 @@ def generate_caption_blip(image):
 # LOAD CAPTION DATASET
 # =========================
 caption_db = CaptionLookup("data_caption.csv")
+caption_db = CaptionLookup("dataset_multimodal_add.xlsx")
 
 # =========================
 # HELPER
@@ -313,12 +314,12 @@ def validate_destination(text, caption, destinasi):
 # UI
 # =========================
 # st.title(
-#     "🌿 Storytelling Multimodal untuk Agentic Decision Support System Pariwisata"
+#     "🌱 Storytelling Multimodal untuk Agentic Decision Support System Pariwisata"
 # )
 
 st.markdown("""
 <div class='main-title'>
-🌿 Storytelling Multimodal untuk Agentic Decision Support System Pariwisata
+🌱 Storytelling Multimodal untuk Agentic Decision Support System Pariwisata
 </div>
 
 <div class='subtitle'>
