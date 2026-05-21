@@ -5,7 +5,6 @@ st.set_page_config(
     layout="wide"
 )
 
-
 # =========================
 # CUSTOM CSS
 # =========================
@@ -86,99 +85,6 @@ st.markdown("""
     line-height: 1.9;
 }
 
-
-/* =========================================
-HERO SECTION
-========================================= */
-
-.hero-badge {
-
-    display: inline-block;
-
-    padding: 8px 18px;
-
-    border-radius: 999px;
-
-    background: rgba(168,85,247,0.18);
-
-    color: #C084FC;
-
-    font-size: 13px;
-
-    font-weight: 700;
-
-    letter-spacing: 1px;
-
-    margin-bottom: 10px;
-
-    border: 1px solid rgba(168,85,247,0.35);
-}
-
-/* =========================================
-TITLE
-========================================= */
-
-.hero-title {
-
-    font-size: 30px;
-
-    font-weight: 700;
-
-    line-height: 1.15;
-
-    background: linear-gradient(
-        90deg,
-        #C084FC,
-        #38BDF8
-    );
-
-    -webkit-background-clip: text;
-
-    -webkit-text-fill-color: transparent;
-
-    text-shadow:
-        0 0 25px rgba(168,85,247,0.25);
-}
-
-/* =========================================
-SUBTITLE
-========================================= */
-
-.hero-subtitle {
-
-    font-size: 15px;
-
-    line-height: 1.8;
-
-    color: #CBD5E1;
-
-    max-width: 700px;
-}
-
-img {
-
-    animation: floating 4s ease-in-out infinite;
-    position:relative;
-    left:250px;
-}
-
-
-
-@keyframes floating {
-
-    0% {
-        transform: translateY(0px);
-    }
-
-    50% {
-        transform: translateY(-10px);
-    }
-
-    100% {
-        transform: translateY(0px);
-    }
-}
-
 /* Title */
 .main-title {
 
@@ -233,7 +139,7 @@ textarea {
 
     border-radius: 18px !important;
 
-    padding: 24px !important;
+    padding: 18px !important;
 
     font-size: 16px !important;
 
@@ -243,34 +149,11 @@ textarea {
 }
 
 /* Selectbox */
-.stSelectbox {
-
-    background: rgba(15,23,42,0.55);
-
-    border: 2px dashed rgba(56,189,248,0.55);
-
-    border-radius: 20px;
-
-    padding: 36px;
-
-    box-shadow:
-        0 0 18px rgba(59,130,246,0.08);
-}
-
-/* INNER SELECT */
 .stSelectbox div[data-baseweb="select"] {
 
-    background: rgba(15,23,42,0.82) !important;
+    background: rgba(15,23,42,0.7);
 
     border-radius: 14px;
-
-    color: white !important;
-}
-
-/* SELECT TEXT */
-.stSelectbox span {
-
-    color: white !important;
 }
 
 div[data-baseweb="select"] {
@@ -279,7 +162,7 @@ div[data-baseweb="select"] {
 
     border: 1px solid rgba(56,189,248,0.25);
 
-    border-radius: 20px;
+    border-radius: 14px;
 
     color: white !important;
 }
@@ -299,16 +182,16 @@ div[data-baseweb="select"] {
         0 0 18px rgba(59,130,246,0.08);
 }
 
-
 /* Neon Button */
 .stButton button {
 
-    background:
-        linear-gradient(
-            90deg,
-            #8B5CF6,
-            #06B6D4
-        );
+    width: 100%;
+
+    background: linear-gradient(
+        90deg,
+        #8B5CF6,
+        #06B6D4
+    );
 
     color: white;
 
@@ -316,19 +199,16 @@ div[data-baseweb="select"] {
 
     border-radius: 18px;
 
-    height: 68px;
-    
+    padding: 18px;
 
-    width: 100%;
-
-    font-size: 32px;
+    font-size: 18px;
 
     font-weight: 700;
 
     box-shadow:
-        0 0 35px rgba(139,92,246,0.35);
+        0 0 20px rgba(139,92,246,0.45);
 
-    transition: 0.3s ease;
+    transition: 0.3s;
 }
 
 .stButton button:hover {
@@ -341,239 +221,6 @@ div[data-baseweb="select"] {
 
 [data-testid="collapsedControl"] {
     display: none;
-}
-
-/* =========================================
-ROBOT CONTAINER
-========================================= */
-
-.robot-container {
-
-    display: flex;
-
-    justify-content: center;
-
-    align-items: center;
-
-    margin-top: 20px;
-    
-}
-
-/* =========================================
-ROBOT IMAGE
-========================================= */
-
-.robot-container img {
-    
-
-    filter:
-        drop-shadow(0 0 25px rgba(168,85,247,0.45));
-
-    animation:
-        floatingRobot 4s ease-in-out infinite;
-}
-
-/* =========================================
-FLOATING ANIMATION
-========================================= */
-
-@keyframes floatingRobot {
-
-    0% {
-        transform: translateY(0px);
-    }
-
-    50% {
-        transform: translateY(-12px);
-    }
-
-    100% {
-        transform: translateY(0px);
-    }
-}
-
-.robot-container {
-
-    position: relative;
-    text-alignt: center;
-}
-
-.robot-container::before {
-
-    content: "";
-
-    position: absolute;
-
-    width: 320px;
-    height: 320px;
-    left: 450px;
-
-    border-radius: 50%;
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(168,85,247,0.25),
-            transparent 70%
-        );
-
-    filter: blur(40px);
-
-    z-index: -1;
-}
-
-/* =========================================
-GLASS CARD
-========================================= */
-
-.glass-card {
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(10,15,35,0.82),
-            rgba(20,30,60,0.45)
-        );
-
-    border:
-        1px solid rgba(255,255,255,0.08);
-
-    border-radius: 28px;
-
-    padding: 28px;
-
-    margin-bottom: 30px;
-
-    backdrop-filter: blur(22px);
-
-    box-shadow:
-        0 10px 40px rgba(0,0,0,0.35);
-}
-
-/* =========================================
-SECTION TITLE
-========================================= */
-
-.section-title {
-
-    font-size: 20px;
-
-    font-weight: 700;
-
-    color: #E2E8F0;
-
-    font-family: raleway;
-}
-
-/* =========================================
-TEXT AREA
-========================================= */
-
-# textarea {
-
-#     background:
-#         rgba(15,23,42,0.88) !important;
-
-#     color: white !important;
-
-#     border-radius: 18px !important;
-
-#     border:
-#         1px solid rgba(168,85,247,0.55) !important;
-
-#     box-shadow:
-#         0 0 25px rgba(168,85,247,0.18);
-
-#     font-size: 18px !important;
-#     padding: 20px !important;
-# }
-
-/* =========================================
-SELECT BOX
-========================================= */
-
-.stSelectbox div[data-baseweb="select"] {
-
-    background:
-        rgba(15,23,42,0.9);
-
-    border-radius: 16px;
-}
-
-/* =========================================
-UPLOAD BOX
-========================================= */
-
-[data-testid="stFileUploader"] {
-
-    border:
-        2px dashed rgba(0,212,255,0.35);
-
-    border-radius: 18px;
-
-    padding: 25px;
-
-    background:
-        rgba(15,23,42,0.35);
-}
-
-[data-testid="stFileUploader"] small {
-
-    display: none;
-}
-
-/* =========================================
-BUTTON
-========================================= */
-
-.stButton button {
-
-    background:
-        linear-gradient(
-            90deg,
-            #8B5CF6,
-            #06B6D4
-        );
-
-    color: white;
-
-    border: none;
-
-    border-radius: 18px;
-
-    height: 68px;
-
-    font-size: 22px;
-
-    font-weight: 700;
-
-    box-shadow:
-        0 0 35px rgba(139,92,246,0.35);
-
-    transition: 0.3s ease;
-}
-
-.stButton button:hover {
-
-    transform: scale(1.02);
-
-    box-shadow:
-        0 0 45px rgba(6,182,212,0.45);
-}
-
-/* HIDE STREAMLIT HEADER */
-header[data-testid="stHeader"]{
-    display: none;
-}
-
-/* HIDE TOOLBAR */
-[data-testid="stToolbar"]{
-    display: none;
-}
-
-/* HIDE HAMBURGER */
-#MainMenu{
-    visibility: hidden;
 }
 
 footer {
@@ -798,206 +445,62 @@ def validate_destination(text, caption, destinasi):
 #     "🌱 Storytelling Multimodal untuk Agentic Decision Support System Pariwisata"
 # )
 
-# st.markdown("""
-# <div class='main-title'>
-# 🌱 Storytelling Multimodal untuk Agentic Decision Support System Pariwisata
-# </div>
-
-# <div class='subtitle'>
-# Integrasi storytelling multimodal berbasis Large Language Models untuk mendukung pengambilan keputusan pariwisata.
-# </div>
-# """, unsafe_allow_html=True)
-
-
-
-col1, col2 = st.columns([2, 5])
-
-with col1:
-
-    st.markdown("<div class='robot-container'>", unsafe_allow_html=True)
-
-    st.image(
-        "robbot.png",
-        width=250
-    )
-
-    st.markdown("</div>", unsafe_allow_html=True)
-
-with col2:
-
-    st.markdown("""
-    <div class='hero-badge'>
-        AI STORYTELLING ENGINE
-    </div>
-
-    <div class='hero-title'>
-        Storytelling Multimodal untuk <br>
-        Agentic Decision Support System Pariwisata
-    </div>
-
-    <div class='hero-subtitle'>
-        Integrasi storytelling multimodal berbasis Large Language Models 
-        untuk mendukung pengambilan keputusan pariwisata yang cerdas, 
-        adaptif, dan berbasis data.
-    </div>
-    """, unsafe_allow_html=True)
-
-# col1, col2 = st.columns([1, 2])
-
-# with col1:
-
-#     st.image(
-#         "logo.png",
-#         width=260
-#     )
-
-# with col2:
-
-#     st.markdown("""
-#     <div class='hero-badge'>
-#         AI STORYTELLING ENGINE
-#     </div>
-
-#     <div class='hero-title'>
-#         Storytelling Multimodal untuk <br>
-#         Agentic Decision Support System Pariwisata
-#     </div>
-
-#     <div class='hero-subtitle'>
-#         Integrasi storytelling multimodal berbasis Large Language Models 
-#         untuk mendukung pengambilan keputusan pariwisata yang cerdas, 
-#         adaptif, dan berbasis data.
-#     </div>
-#     """, unsafe_allow_html=True)
-
-
-# text = st.text_area("📝 Masukkan teks wisata")
-
-# image_file = st.file_uploader("📷 Upload gambar")
-
-# # =========================
-# # VALIDASI DESTINASI (ANTI HALUSINASI DOMAIN)
-# # =========================
-# #DESTINASI_VALID = ["Danau Toba", "Candi Borobudur"]
-# DESTINASI_VALID = [
-#     "Danau Toba",
-#     "Candi Borobudur",
-#     "Riam Berawan't",
-#     "Sepadang Hill"
-# ]
-
-# destinasi = st.selectbox(
-#     "📍 Pilih Destinasi Wisata",
-#     DESTINASI_VALID
-# )
-
-# if destinasi not in DESTINASI_VALID:
-#     st.error("Destinasi tidak valid.")
-#     st.stop()
-
-# orch = AgentOrchestrator()
-
-# # =========================
-# # GENERATE
-# # =========================
-# #if st.button("🧠 Generate Storytelling & Agentic DSS"):
-# generate = st.button("🧠 Generate Storytelling & Agentic DSS")
-
-# =====================================================
-# TEXT INPUT
-# =====================================================
 st.markdown("""
-<div class='section-title'>
-📝 Masukkan Teks Wisata
+<div class='main-title'>
+🌱 Storytelling Multimodal untuk Agentic Decision Support System Pariwisata
+</div>
+
+<div class='subtitle'>
+Integrasi storytelling multimodal berbasis Large Language Models untuk mendukung pengambilan keputusan pariwisata.
 </div>
 """, unsafe_allow_html=True)
 
-text = st.text_area(
-    "",
-    placeholder="Masukkan ulasan atau pengalaman wisata yang ingin diceritakan...",
-    height=170
+text = st.text_area("📝 Masukkan teks wisata")
+
+image_file = st.file_uploader("📷 Upload gambar")
+
+# =========================
+# VALIDASI DESTINASI (ANTI HALUSINASI DOMAIN)
+# =========================
+#DESTINASI_VALID = ["Danau Toba", "Candi Borobudur"]
+DESTINASI_VALID = [
+    "Danau Toba",
+    "Candi Borobudur",
+    "Riam Berawan't",
+    "Sepadang Hill"
+]
+
+destinasi = st.selectbox(
+    "📍 Pilih Destinasi Wisata",
+    DESTINASI_VALID
 )
 
-st.markdown("<br>", unsafe_allow_html=True)
+if destinasi not in DESTINASI_VALID:
+    st.error("Destinasi tidak valid.")
+    st.stop()
 
-# =====================================================
-# 2 COLUMN LAYOUT
-# =====================================================
+orch = AgentOrchestrator()
 
-col1, col2 = st.columns([1.2, 1])
+# =========================
+# GENERATE
+# =========================
+#if st.button("🧠 Generate Storytelling & Agentic DSS"):
+generate = st.button("🧠 Generate Storytelling & Agentic DSS")
 
-# =====================================================
-# UPLOAD
-# =====================================================
 
-with col1:
-
-    st.markdown("""
-    <div class='glass-card'>
-    <div class='section-title'>
-    🖼️ Upload Gambar
-    </div>
-    """, unsafe_allow_html=True)
-
-    uploaded_file = st.file_uploader(
-        "",
-        type=["jpg", "jpeg", "png", "webp"]
-    )
-
-    st.markdown("</div>", unsafe_allow_html=True)
-
-# =====================================================
-# DESTINATION
-# =====================================================
-
-with col2:
-
-    st.markdown("""
-    <div class='glass-card'>
-    <div class='section-title'>
-    📍 Pilih Destinasi Wisata
-    </div>
-    """, unsafe_allow_html=True)
-
-    destinasi = st.selectbox(
-        "",
-        [
-            "Danau Toba",
-            "Candi Borobudur",
-            "Riam Berawant",
-            "Sepadang Hill"
-        ]
-    )
-
-    st.markdown("</div>", unsafe_allow_html=True)
-
-# =====================================================
-# BUTTON
-# =====================================================
-
-st.markdown("<br>", unsafe_allow_html=True)
-
-col_btn1, col_btn2, col_btn3 = st.columns([1,2,1])
-
-with col_btn2:
-
-    generate = st.button(
-        "🧠 Generate Storytelling & Agentic DSS",
-        use_container_width=True
-    )
 
 if generate:
 
-    if text and uploaded_file:
+    if text and image_file:
 
         # tampilkan gambar (TETAP ADA)
-        image = Image.open(uploaded_file)
+        image = Image.open(image_file)
         st.image(image, width=240)
 
         # =========================
         # CAPTION (HANYA BACKEND)
         # =========================
-        filename = uploaded_file.name.lower().strip()
+        filename = image_file.name.lower().strip()
         caption = generate_caption_blip(image)
 
         # =========================
