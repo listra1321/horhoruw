@@ -231,11 +231,11 @@ textarea {
 
     border-radius: 18px !important;
 
-    padding: 1px !important;
+    padding: 24px !important;
 
-    font-size: 12px !important;
+    font-size: 16px !important;
 
-    min-height: 100px !important;
+    min-height: 50px !important;
 
     line-height: 1.8 !important;
 
