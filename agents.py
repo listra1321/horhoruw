@@ -80,7 +80,6 @@ Fokus hanya pada destinasi:
 ATURAN:
 - Gunakan Bahasa Indonesia natural dan komunikatif
 - Pertahankan nuansa pengalaman wisata asli
-- Jangan terlalu formal seperti artikel akademik
 - Emosi dan pengalaman wisata boleh tetap terasa natural
 - Gabungkan teks wisatawan dan visual gambar
 - Narasi harus natural dan imersif
@@ -101,11 +100,6 @@ ATURAN:
   "sehingga"
   "dapat disimpulkan"
   "hal ini menunjukkan bahwa"
-- Hindari kalimat terlalu sempurna dan terlalu formal
-- Pertahankan nuansa pengalaman manusia
-- Gunakan gaya narasi wisata yang natural
-- Jangan menggunakan kalimat promosi seperti "sangat direkomendasikan"
-- Jika ada pengalaman unik dari wisatawan, pertahankan maknanya secara natural
 - Fokus pada pengalaman wisata dan suasana destinasi
 """
 
@@ -144,23 +138,25 @@ Fokus hanya pada:
 
 ATURAN SANGAT PENTING:
 ATURAN:
-- Gunakan storytelling sebagai dasar utama analisis
-- Fokus pada pengalaman wisata yang muncul dalam storytelling
-- Jelaskan karakter pengalaman wisata dan hal penting yang dapat dipahami dari pengalaman tersebut
-- Hindari pembahasan yang tidak relevan dengan pengalaman wisata
+- Gunakan storytelling sebagai dasar utama pengambilan keputusan
+- Fokus pada kondisi, pengalaman, dan situasi yang muncul dalam storytelling
+- Identifikasi hal yang perlu diperhatikan, diperbaiki, atau dipertahankan berdasarkan pengalaman wisatawan
+- Keputusan harus tetap relevan dengan isi storytelling
+- Jangan menambahkan pembahasan yang tidak muncul pada storytelling
+- Hindari rekomendasi umum yang terlalu luas atau generik
 - Jangan membuat promosi wisata
 - Jangan mengulang storytelling secara penuh
 - Output hanya SATU paragraf
 - Jangan menggunakan bullet atau numbering
-- Gunakan Bahasa Indonesia yang natural dan reflektif
-- Gunakan gaya analisis seperti peneliti manusia
+- Gunakan Bahasa Indonesia yang natural, jelas, dan profesional
+- Gunakan gaya analisis seperti hasil pemikiran manusia
 - Hindari bahasa yang terlalu formal atau terdengar seperti template AI
 - Hindari connector seperti:
   "oleh karena itu"
   "dengan demikian"
   "dapat disimpulkan"
 - Gunakan transisi yang lebih alami dan kontekstual
-- Narasi harus terasa seperti interpretasi pengalaman wisata, bukan laporan akademik generik
+- Narasi harus terasa sebagai hasil pengambilan keputusan berbasis pengalaman wisata, bukan laporan akademik generik
 """
 
         user_prompt = f"""
@@ -171,15 +167,16 @@ TUGAS:
 Buat satu paragraf hasil Agentic DSS berdasarkan storytelling tersebut dan berbahasa INDONESIA.
 
 ATURAN:
-- Jangan membuat rekomendasi poin
+- Gunakan storytelling sebagai dasar utama pengambilan keputusan
+- Fokus pada kondisi dan pengalaman wisata yang muncul pada storytelling
+- Jelaskan hal yang perlu diperhatikan, dipertahankan, atau diperbaiki berdasarkan pengalaman wisatawan
+- Jangan membuat rekomendasi umum yang tidak relevan dengan storytelling
 - Jangan membuat promosi wisata
-- Gunakan storytelling sebagai dasar reasoning
-- Jelaskan keputusan atau arah pengelolaan destinasi secara natural
-- Fokus pada interpretasi strategis ekowisata
-- Gunakan elemen yang muncul pada storytelling sebagai dasar analisis
-- Gunakan bahasa yang lebih natural dan tidak kaku
+- Jangan mengulang storytelling secara penuh
+- Gunakan elemen yang benar-benar muncul pada storytelling sebagai dasar analisis
+- Gunakan bahasa yang natural, jelas, dan profesional
 - Hindari pola kalimat generik khas AI
-- Gunakan gaya analisis reflektif seperti peneliti manusia
+- Gunakan gaya analisis seperti hasil pemikiran manusia
 """
 
         result = call_llm(system_prompt, user_prompt)
