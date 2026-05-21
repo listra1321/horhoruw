@@ -1028,8 +1028,8 @@ if generate:
         # =========================
         # MULTI-AGENT PROCESS
         # =========================
-        with st.spinner("🤖 Menghasilkan storytelling dan kebijakan..."):
-            result = orch.run(text, caption, destinasi)
+        # with st.spinner("🤖 Menghasilkan storytelling dan kebijakan..."):
+        #     result = orch.run(text, caption, destinasi)
             
         
 
