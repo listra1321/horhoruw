@@ -470,24 +470,24 @@ SECTION TITLE
 TEXT AREA
 ========================================= */
 
-# textarea {
+textarea {
 
-#     background:
-#         rgba(15,23,42,0.88) !important;
+    background:
+        rgba(15,23,42,0.88) !important;
 
-#     color: white !important;
+    color: white !important;
 
-#     border-radius: 18px !important;
+    border-radius: 18px !important;
 
-#     border:
-#         1px solid rgba(168,85,247,0.55) !important;
+    border:
+        1px solid rgba(168,85,247,0.55) !important;
 
-#     box-shadow:
-#         0 0 25px rgba(168,85,247,0.18);
+    box-shadow:
+        0 0 25px rgba(168,85,247,0.18);
 
-#     font-size: 18px !important;
-#     padding: 20px !important;
-# }
+    font-size: 18px !important;
+    padding: 20px !important;
+}
 
 /* =========================================
 SELECT BOX
