@@ -118,9 +118,9 @@ TITLE
 
 .hero-title {
 
-    font-size: 48px;
+    font-size: 28px;
 
-    font-weight: 800;
+    font-weight: 300;
 
     line-height: 1.15;
 
@@ -146,7 +146,7 @@ SUBTITLE
 
 .hero-subtitle {
 
-    font-size: 22px;
+    font-size: 12px;
 
     line-height: 1.8;
 
