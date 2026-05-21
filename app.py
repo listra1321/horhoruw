@@ -11,165 +11,167 @@ st.set_page_config(
 
 st.markdown("""
 <style>
-
-/* Background */
 .stApp {
 
-    background: linear-gradient(
-        -45deg,
-        #F8FAFC,
-        #E0F2FE,
-        #DCFCE7,
-        #F1F5F9
-    );
+    background:
+        radial-gradient(circle at top left, rgba(59,130,246,0.18), transparent 30%),
+        radial-gradient(circle at bottom right, rgba(168,85,247,0.18), transparent 30%),
+        linear-gradient(135deg, #020617, #0F172A);
 
-    background-size: 400% 400%;
-
-    animation: gradientMove 15s ease infinite;
-
-}
-
-/* =========================================
-ANIMATION
-========================================= */
-
-@keyframes gradientMove {
-
-    0% {
-        background-position: 0% 50%;
-    }
-
-    50% {
-        background-position: 100% 50%;
-    }
-
-    100% {
-        background-position: 0% 50%;
-    }
-}
-
-.stApp::before {
-
-    content: "";
-
-    position: fixed;
-
-    width: 500px;
-    height: 500px;
-
-    background: rgba(16, 185, 129, 0.15);
-
-    border-radius: 50%;
-
-    top: -100px;
-    right: -100px;
-
-    filter: blur(120px);
-
-    z-index: -1;
-}
-
-.stApp::after {
-
-    content: "";
-
-    position: fixed;
-
-    width: 400px;
-    height: 400px;
-
-    background: rgba(59, 130, 246, 0.12);
-
-    border-radius: 50%;
-
-    bottom: -100px;
-    left: -100px;
-
-    filter: blur(120px);
-
-    z-index: -1;
+    color: white;
 }
 
 /* Main Container */
 .main .block-container {
     padding-top: 2rem;
-    padding-bottom: 2rem;
-    padding-left: 3rem;
-    padding-right: 3rem;
+    padding-left: 4rem;
+    padding-right: 4rem;
 }
 
-.stButton {
-    width: 100%;
+/* Glass Card */
+.custom-card {
+
+    background: rgba(15, 23, 42, 0.55);
+
+    backdrop-filter: blur(14px);
+
+    border: 1px solid rgba(255,255,255,0.08);
+
+    border-radius: 24px;
+
+    padding: 28px;
+
+    box-shadow:
+        0 0 30px rgba(59,130,246,0.12),
+        0 0 60px rgba(168,85,247,0.08);
+
+    margin-bottom: 25px;
 }
 
-.stButton button {
-    width: 100%;
-}
-
+/* Result Box */
 .result-box {
-    line-height: 1.8;
+
+    background: rgba(15, 23, 42, 0.55);
+
+    backdrop-filter: blur(14px);
+
+    border: 1px solid rgba(255,255,255,0.08);
+
+    border-radius: 24px;
+
+    padding: 28px;
+
+    box-shadow:
+        0 0 30px rgba(59,130,246,0.12);
+
+    margin-top: 30px;
+
+    line-height: 1.9;
 }
 
 /* Title */
 .main-title {
-    font-size: 42px;
+
+    font-size: 52px;
+
     font-weight: 800;
-    color: #1E293B;
+
+    background: linear-gradient(
+        90deg,
+        #A855F7,
+        #38BDF8
+    );
+
+    -webkit-background-clip: text;
+
+    -webkit-text-fill-color: transparent;
+
     margin-bottom: 10px;
 }
 
+/* Subtitle */
 .subtitle {
+
     font-size: 18px;
-    color: #64748B;
+
+    color: #CBD5E1;
+
     margin-bottom: 35px;
 }
 
-/* Card Style */
-.custom-card {
-    background: white;
-    padding: 25px;
-    border-radius: 18px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-    margin-bottom: 25px;
-}
+/* Text */
+label, p, div {
 
-/* Button */
-.stButton>button {
-    background: linear-gradient(90deg, #10B981, #059669);
-    color: white;
-    border: none;
-    border-radius: 12px;
-    padding: 12px 24px;
-    font-size: 16px;
-    font-weight: 600;
-    transition: 0.3s;
-}
-
-.stButton>button:hover {
-    background: linear-gradient(90deg, #059669, #047857);
-    transform: scale(1.02);
+    color: #E2E8F0 !important;
 }
 
 /* Text Area */
 textarea {
-    border-radius: 12px !important;
+
+    background: rgba(15,23,42,0.7) !important;
+
+    border: 1px solid #334155 !important;
+
+    color: white !important;
+
+    border-radius: 18px !important;
 }
 
-/* Upload Box */
-[data-testid="stFileUploader"] {
-    background: white;
-    padding: 15px;
+/* Selectbox */
+.stSelectbox div[data-baseweb="select"] {
+
+    background: rgba(15,23,42,0.7);
+
     border-radius: 14px;
-    border: 1px solid #E2E8F0;
 }
 
-/* Result Section */
-.result-box {
-    background: white;
-    padding: 25px;
+/* Upload */
+[data-testid="stFileUploader"] {
+
+    background: rgba(15,23,42,0.6);
+
+    border: 1px dashed #38BDF8;
+
+    border-radius: 20px;
+
+    padding: 20px;
+}
+
+/* Neon Button */
+.stButton button {
+
+    width: 100%;
+
+    background: linear-gradient(
+        90deg,
+        #8B5CF6,
+        #06B6D4
+    );
+
+    color: white;
+
+    border: none;
+
     border-radius: 18px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-    margin-top: 20px;
+
+    padding: 16px;
+
+    font-size: 18px;
+
+    font-weight: 700;
+
+    box-shadow:
+        0 0 20px rgba(139,92,246,0.45);
+
+    transition: 0.3s;
+}
+
+.stButton button:hover {
+
+    transform: scale(1.02);
+
+    box-shadow:
+        0 0 35px rgba(6,182,212,0.55);
 }
 
 </style>
