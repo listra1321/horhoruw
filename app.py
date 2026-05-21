@@ -373,8 +373,8 @@ FLOATING ANIMATION
 
     position: absolute;
 
-    width: 620px;
-    height: 620px;
+    width: 320px;
+    height: 320px;
 
     border-radius: 50%;
 
@@ -622,7 +622,7 @@ def validate_destination(text, caption, destinasi):
 # </div>
 # """, unsafe_allow_html=True)
 
-col1, col2 = st.columns([1.2, 4])
+col1, col2 = st.columns([2, 5])
 
 with col1:
 
@@ -630,7 +630,7 @@ with col1:
 
     st.image(
         "logo.png",
-        width=920
+        width=420
     )
 
     st.markdown("</div>", unsafe_allow_html=True)
