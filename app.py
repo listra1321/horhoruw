@@ -5,12 +5,118 @@ st.set_page_config(
     layout="wide"
 )
 
+st.markdown("""
+<div class="topbar">
+
+    <div class="topbar-left">
+
+        <img src="https://cdn-icons-png.flaticon.com/512/4712/4712109.png"
+        class="topbar-logo">
+
+        <div class="topbar-title">
+            Agentic DSS Pariwisata
+        </div>
+
+    </div>
+
+    <div class="topbar-right">
+
+        <span>Dashboard</span>
+
+        <span>Analitik</span>
+
+        <span>AI Agent</span>
+
+        <span>⚙️</span>
+
+    </div>
+
+</div>
+""", unsafe_allow_html=True)
 # =========================
 # CUSTOM CSS
 # =========================
 
 st.markdown("""
 <style>
+
+.topbar{
+
+    position: fixed;
+
+    top: 0;
+
+    left: 0;
+
+    right: 0;
+
+    z-index: 9999;
+
+    height: 72px;
+
+    padding: 0 40px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    background:
+        rgba(5,10,25,0.92);
+
+    backdrop-filter: blur(18px);
+
+    border-bottom:
+        1px solid rgba(255,255,255,0.08);
+}
+
+/* LEFT */
+.topbar-left{
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 14px;
+}
+
+/* LOGO */
+.topbar-logo{
+
+    width: 42px;
+}
+
+/* TITLE */
+.topbar-title{
+
+    color: white;
+
+    font-size: 22px;
+
+    font-weight: 700;
+}
+
+/* RIGHT */
+.topbar-right{
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 28px;
+
+    color: rgba(255,255,255,0.78);
+
+    font-size: 15px;
+}
+
+/* SPACING BODY */
+.block-container{
+
+    padding-top: 110px !important;
+}
+
 .stApp {
 
     background:
