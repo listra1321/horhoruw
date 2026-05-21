@@ -466,6 +466,8 @@ st.markdown("""
 </div>
 
 
+""", unsafe_allow_html=True)
+
 text = st.text_area("📝 Masukkan teks wisata")
 
 image_file = st.file_uploader("📷 Upload gambar")
