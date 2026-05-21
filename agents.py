@@ -144,38 +144,22 @@ Fokus hanya pada:
 
 ATURAN SANGAT PENTING:
 - Gunakan HANYA informasi yang muncul pada storytelling
-- DILARANG menambahkan konsep baru yang tidak ada pada storytelling
-- Jangan menambahkan:
-  - infrastruktur
-  - promosi
-  - strategi umum
-  - ekonomi
-  - fasilitas
-  jika tidak disebut dalam storytelling
-- Analisis harus grounded pada narasi wisata
-- Gunakan gaya akademik formal
-- Output hanya SATU paragraf
-- Jangan bullet
-- Jangan numbering
-- Jangan mengulang storytelling sepenuhnya
-- Fokus pada interpretasi DSS dari pengalaman wisata dan implikiasi pengelolaannya
-- Gunakan gaya akademik yang natural dan reflektif
-- Hindari bahasa yang terlalu formal seperti AI template
-- Hindari connector AI seperti:
-  "oleh karena itu"
-  "namun"
-  "dengan demikian"
-  "sehingga"
-  "dapat disimpulkan"
-  "hal ini menunjukkan bahwa"
-- Gunakan transisi yang lebih alami dan manusiawi
-- Narasi harus terasa seperti hasil analisis peneliti
-- DSS harus menjelaskan:
-  - karakteristik destinasi,
-  - arah pengelolaan,
-  - implikasi pengembangan wisata,
-  berdasarkan storytelling
-- Jangan terdengar seperti laporan akademik generik
+- Jangan menambahkan konsep baru
+- Jangan membuat rekomendasi pembangunan umum
+- Jangan menggunakan istilah:
+  infrastruktur,
+  fasilitas,
+  optimalisasi,
+  pengembangan ekonomi,
+  strategi,
+  promosi
+- Jangan terdengar seperti artikel AI atau laporan formal
+- Jangan mengulang storytelling
+- Output hanya satu paragraf
+- Gunakan gaya bahasa natural seperti analisis manusia
+- Fokus pada makna pengalaman wisata yang dirasakan pengunjung
+- Jelaskan karakter pengalaman wisata dan hal penting yang dapat dipahami dari pengalaman tersebut
+- Pertahankan nuansa alami dari storytelling
 """
 
         user_prompt = f"""
@@ -187,15 +171,13 @@ Buat satu paragraf hasil Agentic DSS berdasarkan storytelling tersebut.
 
 ATURAN:
 - Jangan menceritakan ulang storytelling
-- Jangan membuat rekomendasi poin
 - Jangan membuat promosi wisata
-- Gunakan storytelling sebagai dasar reasoning
-- Jelaskan keputusan atau arah pengelolaan destinasi secara natural
-- Fokus pada interpretasi strategis ekowisata
-- Gunakan elemen yang muncul pada storytelling sebagai dasar analisis
-- Gunakan bahasa yang lebih natural dan tidak kaku
-- Hindari pola kalimat generik khas AI
-- Gunakan gaya analisis reflektif seperti peneliti manusia
+- Jangan membuat rekomendasi pembangunan umum
+- Gunakan storytelling sebagai dasar analisis
+- Fokus pada pengalaman wisata yang muncul
+- Jelaskan hal penting yang dapat dipahami dari pengalaman wisatawan
+- Gunakan gaya analisis yang natural dan reflektif
+- Hindari pola bahasa khas AI
 """
 
         result = call_llm(system_prompt, user_prompt)
