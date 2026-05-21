@@ -159,7 +159,7 @@ img {
 
     animation: floating 4s ease-in-out infinite;
     position:relative;
-    left:80px;
+    left:250px;
 }
 
 
