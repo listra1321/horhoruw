@@ -78,7 +78,10 @@ Fokus hanya pada destinasi:
 {destination}
 
 ATURAN:
-- Gunakan Bahasa Indonesia formal
+- Gunakan Bahasa Indonesia natural dan komunikatif
+- Pertahankan nuansa pengalaman wisata asli
+- Jangan terlalu formal seperti artikel akademik
+- Emosi dan pengalaman wisata boleh tetap terasa natural
 - Gabungkan teks wisatawan dan visual gambar
 - Narasi harus natural dan imersif
 - Jangan membuat bullet
@@ -86,8 +89,17 @@ ATURAN:
 - Jangan menggunakan numbering
 - Jangan menyebut destinasi lain
 - Jangan mengarang objek visual
+- Jika terdapat pengalaman unik, ekspresi emosional, atau gaya bahasa khas wisatawan, pertahankan dalam bentuk yang lebih rapi dan natural
 - Narasi hanya SATU paragraf
 - Hindari bahasa promosi
+- Hindari bahasa yang terlalu formal seperti AI template
+- Hindari penggunaan kalimat:
+  "oleh karena itu"
+  "namun"
+  "dengan demikian"
+  "sehingga"
+  "dapat disimpulkan"
+  "hal ini menunjukkan bahwa"
 - Fokus pada pengalaman wisata dan suasana destinasi
 """
 
@@ -145,6 +157,8 @@ ATURAN SANGAT PENTING:
 - Hindari bahasa yang terlalu formal seperti AI template
 - Hindari penggunaan kalimat:
   "oleh karena itu"
+  "namun"
+  "dengan demikian"
   "sehingga"
   "dapat disimpulkan"
   "hal ini menunjukkan bahwa"
