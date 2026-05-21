@@ -118,9 +118,9 @@ TITLE
 
 .hero-title {
 
-    font-size: 28px;
+    font-size: 35px;
 
-    font-weight: 300;
+    font-weight: 700;
 
     line-height: 1.15;
 
@@ -146,7 +146,7 @@ SUBTITLE
 
 .hero-subtitle {
 
-    font-size: 12px;
+    font-size: 20px;
 
     line-height: 1.8;
 
@@ -798,7 +798,7 @@ with col1:
 
     st.image(
         "robbot.png",
-        width=380
+        width=300
     )
 
     st.markdown("</div>", unsafe_allow_html=True)
