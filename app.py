@@ -426,7 +426,7 @@ if generate:
         # =====================================================
         # STORYTELLING
         # =====================================================
-        
+        st.markdown("<div class='custom-card'>", unsafe_allow_html=True)
         st.subheader("📄 Storytelling Wisata")
         
         st.write(f"{emoji} {story.strip()}")
@@ -448,10 +448,7 @@ if generate:
         st.caption(
             "Hasil reasoning Agentic Decision Support System berbasis storytelling multimodal."
         )
-        
-        
-        
-
+        st.markdown("</div>", unsafe_allow_html=True)
  
         
     #     # ======================================================
