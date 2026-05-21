@@ -395,6 +395,7 @@ FLOATING ANIMATION
 .robot-container {
 
     position: relative;
+    text-alignt: center;
 }
 
 .robot-container::before {
@@ -405,7 +406,7 @@ FLOATING ANIMATION
 
     width: 320px;
     height: 320px;
-    left: 250px;
+    left: 450px;
 
     border-radius: 50%;
 
