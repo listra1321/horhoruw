@@ -630,7 +630,8 @@ with col1:
 
     st.image(
         "robbot.png",
-        width=400
+        width=400,
+        margin-left=20
     )
 
     st.markdown("</div>", unsafe_allow_html=True)
