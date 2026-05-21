@@ -997,7 +997,7 @@ if generate:
         # =========================
         # CAPTION (HANYA BACKEND)
         # =========================
-        filename = image_file.name.lower().strip()
+        filename = uploaded_file.name.lower().strip()
         caption = generate_caption_blip(image)
 
         # =========================
