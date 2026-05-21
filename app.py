@@ -465,10 +465,6 @@ st.markdown("""
 🌱 Storytelling Multimodal untuk Agentic Decision Support System Pariwisata
 </div>
 
-<div class='subtitle'>
-Integrasi storytelling multimodal berbasis Large Language Models untuk mendukung pengambilan keputusan pariwisata.
-</div>
-""", unsafe_allow_html=True)
 
 text = st.text_area("📝 Masukkan teks wisata")
 
