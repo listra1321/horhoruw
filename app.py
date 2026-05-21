@@ -160,6 +160,8 @@ img {
     animation: floating 4s ease-in-out infinite;
 }
 
+
+
 @keyframes floating {
 
     0% {
@@ -358,6 +360,34 @@ FLOATING ANIMATION
     100% {
         transform: translateY(0px);
     }
+}
+
+.robot-container {
+
+    position: relative;
+}
+
+.robot-container::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 320px;
+    height: 320px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(168,85,247,0.25),
+            transparent 70%
+        );
+
+    filter: blur(40px);
+
+    z-index: -1;
 }
 
 footer {
