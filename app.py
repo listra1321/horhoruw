@@ -390,6 +390,135 @@ FLOATING ANIMATION
     z-index: -1;
 }
 
+/* =========================================
+GLASS CARD
+========================================= */
+
+.glass-card {
+
+    background:
+        rgba(8,15,40,0.45);
+
+    border:
+        1px solid rgba(0,212,255,0.28);
+
+    border-radius: 22px;
+
+    padding: 24px;
+
+    margin-bottom: 24px;
+
+    backdrop-filter: blur(18px);
+
+    box-shadow:
+        0 0 25px rgba(0,212,255,0.08);
+}
+
+/* =========================================
+SECTION TITLE
+========================================= */
+
+.section-title {
+
+    font-size: 22px;
+
+    font-weight: 700;
+
+    color: #E2E8F0;
+
+    margin-bottom: 18px;
+}
+
+/* =========================================
+TEXT AREA
+========================================= */
+
+textarea {
+
+    background:
+        rgba(15,23,42,0.88) !important;
+
+    color: white !important;
+
+    border-radius: 18px !important;
+
+    border:
+        1px solid rgba(168,85,247,0.55) !important;
+
+    box-shadow:
+        0 0 25px rgba(168,85,247,0.18);
+
+    font-size: 18px !important;
+}
+
+/* =========================================
+SELECT BOX
+========================================= */
+
+.stSelectbox div[data-baseweb="select"] {
+
+    background:
+        rgba(15,23,42,0.9);
+
+    border-radius: 16px;
+}
+
+/* =========================================
+UPLOAD BOX
+========================================= */
+
+[data-testid="stFileUploader"] {
+
+    border:
+        2px dashed rgba(0,212,255,0.35);
+
+    border-radius: 18px;
+
+    padding: 25px;
+
+    background:
+        rgba(15,23,42,0.35);
+}
+
+/* =========================================
+BUTTON
+========================================= */
+
+.stButton button {
+
+    background:
+        linear-gradient(
+            90deg,
+            #8B5CF6,
+            #06B6D4
+        );
+
+    color: white;
+
+    border: none;
+
+    border-radius: 18px;
+
+    height: 68px;
+
+    font-size: 22px;
+
+    font-weight: 700;
+
+    box-shadow:
+        0 0 35px rgba(139,92,246,0.35);
+
+    transition: 0.3s ease;
+}
+
+.stButton button:hover {
+
+    transform: scale(1.02);
+
+    box-shadow:
+        0 0 45px rgba(6,182,212,0.45);
+}
+
 footer {
     visibility: hidden;
 }
@@ -682,39 +811,118 @@ with col2:
 #     </div>
 #     """, unsafe_allow_html=True)
 
-text = st.text_area("📝 Masukkan teks wisata")
 
-image_file = st.file_uploader("📷 Upload gambar")
+# text = st.text_area("📝 Masukkan teks wisata")
 
-# =========================
-# VALIDASI DESTINASI (ANTI HALUSINASI DOMAIN)
-# =========================
-#DESTINASI_VALID = ["Danau Toba", "Candi Borobudur"]
-DESTINASI_VALID = [
-    "Danau Toba",
-    "Candi Borobudur",
-    "Riam Berawan't",
-    "Sepadang Hill"
-]
+# image_file = st.file_uploader("📷 Upload gambar")
 
-destinasi = st.selectbox(
-    "📍 Pilih Destinasi Wisata",
-    DESTINASI_VALID
+# # =========================
+# # VALIDASI DESTINASI (ANTI HALUSINASI DOMAIN)
+# # =========================
+# #DESTINASI_VALID = ["Danau Toba", "Candi Borobudur"]
+# DESTINASI_VALID = [
+#     "Danau Toba",
+#     "Candi Borobudur",
+#     "Riam Berawan't",
+#     "Sepadang Hill"
+# ]
+
+# destinasi = st.selectbox(
+#     "📍 Pilih Destinasi Wisata",
+#     DESTINASI_VALID
+# )
+
+# if destinasi not in DESTINASI_VALID:
+#     st.error("Destinasi tidak valid.")
+#     st.stop()
+
+# orch = AgentOrchestrator()
+
+# # =========================
+# # GENERATE
+# # =========================
+# #if st.button("🧠 Generate Storytelling & Agentic DSS"):
+# generate = st.button("🧠 Generate Storytelling & Agentic DSS")
+
+# =====================================================
+# INPUT TEXT
+# =====================================================
+
+st.markdown("""
+<div class='glass-card'>
+<div class='section-title'>
+📝 Masukkan Teks Wisata
+</div>
+""", unsafe_allow_html=True)
+
+text = st.text_area(
+    "",
+    height=140
 )
 
-if destinasi not in DESTINASI_VALID:
-    st.error("Destinasi tidak valid.")
-    st.stop()
+st.markdown("</div>", unsafe_allow_html=True)
 
-orch = AgentOrchestrator()
+# =====================================================
+# 2 COLUMN
+# =====================================================
 
-# =========================
-# GENERATE
-# =========================
-#if st.button("🧠 Generate Storytelling & Agentic DSS"):
-generate = st.button("🧠 Generate Storytelling & Agentic DSS")
+col1, col2 = st.columns(2)
 
+# =====================================================
+# UPLOAD IMAGE
+# =====================================================
 
+with col1:
+
+    st.markdown("""
+    <div class='glass-card'>
+    <div class='section-title'>
+    🖼️ Upload Gambar
+    </div>
+    """, unsafe_allow_html=True)
+
+    uploaded_file = st.file_uploader(
+        "",
+        type=["jpg", "jpeg", "png", "webp"]
+    )
+
+    st.markdown("</div>", unsafe_allow_html=True)
+
+# =====================================================
+# DESTINATION
+# =====================================================
+
+with col2:
+
+    st.markdown("""
+    <div class='glass-card'>
+    <div class='section-title'>
+    📍 Pilih Destinasi Wisata
+    </div>
+    """, unsafe_allow_html=True)
+
+    destinasi = st.selectbox(
+        "",
+        [
+            "Danau Toba",
+            "Candi Borobudur",
+            "Riam Berawant",
+            "Sepadang Hill"
+        ]
+    )
+
+    st.markdown("</div>", unsafe_allow_html=True)
+
+# =====================================================
+# BUTTON
+# =====================================================
+
+st.markdown("<br>", unsafe_allow_html=True)
+
+generate = st.button(
+    "🧠 Generate Storytelling & Agentic DSS",
+    use_container_width=True
+)
 
 if generate:
 
