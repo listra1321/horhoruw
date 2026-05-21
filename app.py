@@ -317,7 +317,7 @@ div[data-baseweb="select"] {
     border-radius: 18px;
 
     height: 68px;
-    margin-top:-30px;
+    
 
     width: 100%;
 
