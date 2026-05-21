@@ -2,48 +2,21 @@ import os
 import streamlit as st
 import requests
 
+# =====================================================
+# API CONFIG
+# =====================================================
+
 OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY")
 
 if not OPENROUTER_API_KEY:
     OPENROUTER_API_KEY = st.secrets["OPENROUTER_API_KEY"]
+
 MODEL = "meta-llama/llama-3-8b-instruct"
 
+# =====================================================
+# GENERIC LLM CALL
+# =====================================================
 
-def call_llm_multimodal(content):
-
-    url = "https://openrouter.ai/api/v1/chat/completions"
-
-    headers = {
-        "Authorization": f"Bearer {OPENROUTER_API_KEY}",
-        "Content-Type": "application/json"
-    }
-
-    data = {
-        "model": "openai/gpt-4o-mini",
-        "messages": [
-            {
-                "role": "user",
-                "content": content
-            }
-        ]
-    }
-
-    response = requests.post(url, headers=headers, json=data)
-
-    try:
-        res = response.json()
-        print("DEBUG RESPONSE:", res)
-
-        if 'choices' in res:
-            return res['choices'][0]['message']['content']
-        elif 'error' in res:
-            return f"API ERROR: {res['error']['message']}"
-        else:
-            return f"UNKNOWN RESPONSE: {res}"
-
-    except Exception as e:
-        return f"EXCEPTION: {str(e)}"
-    
 def call_llm(system_prompt, user_prompt):
 
     url = "https://openrouter.ai/api/v1/chat/completions"
@@ -56,22 +29,33 @@ def call_llm(system_prompt, user_prompt):
     data = {
         "model": MODEL,
         "messages": [
-            {"role": "system", "content": system_prompt},
-            {"role": "user", "content": user_prompt}
+            {
+                "role": "system",
+                "content": system_prompt
+            },
+            {
+                "role": "user",
+                "content": user_prompt
+            }
         ],
         "temperature": 0.3
     }
 
-    response = requests.post(url, headers=headers, json=data)
+    response = requests.post(
+        url,
+        headers=headers,
+        json=data
+    )
 
     try:
         res = response.json()
-        print("DEBUG TEXT:", res)
 
-        if 'choices' in res:
-            return res['choices'][0]['message']['content']
-        elif 'error' in res:
+        if "choices" in res:
+            return res["choices"][0]["message"]["content"]
+
+        elif "error" in res:
             return f"API ERROR: {res['error']['message']}"
+
         else:
             return str(res)
 
@@ -79,237 +63,240 @@ def call_llm(system_prompt, user_prompt):
         return str(e)
 
 
-# =========================
-# STORY AGENT
-# =========================
+# =====================================================
+# STORYTELLING AGENT
+# =====================================================
 
-class StoryAgent:
+class StorytellingAgent:
 
-    def __init__(self, memory):
-        self.memory = memory
+    def run(self, text, caption, destination):
 
-    def run(self, context):
+        system_prompt = f"""
+Anda adalah Storytelling Agent multimodal pada sistem pariwisata berbasis Large Language Models.
 
-        examples = self.memory.get_examples()
-        fewshot = self.memory.format_examples(examples)
+Fokus hanya pada destinasi:
+{destination}
 
-        prompt = f"""
-Gunakan pola contoh berikut:
-
-{fewshot}
-
-Sekarang buat storytelling + rekomendasi kebijakan:
-
-INPUT BARU:
-{context}
-
-OUTPUT:
+ATURAN:
+- Gunakan Bahasa Indonesia formal
+- Gabungkan teks wisatawan dan visual gambar
+- Narasi harus natural dan imersif
+- Jangan membuat bullet
+- Jangan membuat rekomendasi kebijakan
+- Jangan menggunakan numbering
+- Jangan menyebut destinasi lain
+- Jangan mengarang objek visual
+- Narasi hanya SATU paragraf
+- Hindari bahasa promosi
+- Fokus pada pengalaman wisata dan suasana destinasi
 """
 
-        return call_llm("Ikuti pola contoh.", prompt)
+        user_prompt = f"""
+INPUT TEKS:
+{text}
+
+DESKRIPSI GAMBAR:
+{caption}
+
+TUGAS:
+Buat storytelling multimodal dalam satu paragraf yang menyatukan pengalaman wisatawan dan suasana visual destinasi secara alami.
+"""
+
+        result = call_llm(system_prompt, user_prompt)
+
+        result = result.replace("\n", " ")
+        result = " ".join(result.split())
+
+        return result
 
 
-# ================================
-# AGENTIC CONTROL MODULE 
-# =================================
+# =====================================================
+# DSS AGENT
+# =====================================================
+
+class DSSAgent:
+
+    def run(self, storytelling, destination):
+
+        system_prompt = f"""
+Anda adalah Agentic Decision Support System (DSS) untuk pariwisata berkelanjutan.
+
+Fokus hanya pada:
+{destination}
+
+ATURAN:
+- Gunakan Bahasa Indonesia formal akademik
+- Output hanya SATU paragraf
+- Jangan gunakan bullet
+- Jangan gunakan numbering
+- Jangan membuat rekomendasi poin
+- Fokus pada reasoning pengambilan keputusan
+- Gunakan storytelling sebagai dasar analisis
+- Narasi harus mencerminkan analisis DSS
+- Jangan mengulang storytelling secara penuh
+- Jangan menyebut destinasi lain
+"""
+
+        user_prompt = f"""
+STORYTELLING MULTIMODAL:
+{storytelling}
+
+TUGAS:
+Berdasarkan storytelling tersebut, buat satu paragraf hasil Agentic DSS yang menjelaskan pengambilan keputusan strategis untuk pengembangan pariwisata berkelanjutan pada destinasi tersebut.
+"""
+
+        result = call_llm(system_prompt, user_prompt)
+
+        result = result.replace("\n", " ")
+        result = " ".join(result.split())
+
+        return result
+
+
+# =====================================================
+# AGENTIC CONTROL
+# =====================================================
 
 def check_issues(result, destination):
 
     issues = []
 
-    if "Destinasi Wisata" in result:
-        issues.append("DESTINATION_WRONG")
-
     if destination not in result:
         issues.append("DESTINATION_MISSING")
 
-    if len(result) < 120:
+    if len(result) < 150:
         issues.append("TOO_SHORT")
 
-    # deteksi halusinasi umum
-    hallucination_words = [
-        "reruntuhan kota",
-        "kota tua",
-        "ancient city",
-        "old ruins",
-        "Guatemala"
+    forbidden = [
+        "1.",
+        "2.",
+        "3.",
+        "•",
+        "Rekomendasi",
+        "\n\n"
     ]
 
-    for w in hallucination_words:
-        if w in result:
+    for f in forbidden:
+        if f in result:
+            issues.append("INVALID_FORMAT")
+
+    hallucinations = [
+        "ancient city",
+        "old ruins",
+        "guatemala",
+        "machu picchu",
+        "reruntuhan kota"
+    ]
+
+    for h in hallucinations:
+        if h.lower() in result.lower():
             issues.append("HALLUCINATION")
 
-    return issues
+    return list(set(issues))
 
+
+# =====================================================
+# REFINE AGENT
+# =====================================================
 
 def refine_output(result, issues, destination):
 
-    prompt = f"""
-Perbaiki teks berikut:
+    system_prompt = """
+Anda adalah Refiner Agent untuk memperbaiki kualitas narasi DSS.
+"""
+
+    user_prompt = f"""
+PERBAIKI TEKS BERIKUT:
 
 {result}
 
-Masalah:
+MASALAH:
 {issues}
 
 ATURAN:
-- Gunakan {destination}
-- Jangan gunakan "Destinasi Wisata"
-- Perbaiki agar lebih natural, detail, imersif, dan konsisten
-- Gunakan Bahasa Indonesia formal
-- Jangan ubah struktur output
-
-HASIL:
+- Fokus pada destinasi {destination}
+- Output hanya SATU paragraf
+- Jangan gunakan bullet
+- Jangan gunakan numbering
+- Gunakan gaya akademik formal
+- Jangan mengubah makna utama
+- Buat lebih natural dan konsisten
 """
 
-    return call_llm("Refine teks agar lebih baik.", prompt)
+    refined = call_llm(system_prompt, user_prompt)
+
+    refined = refined.replace("\n", " ")
+    refined = " ".join(refined.split())
+
+    return refined
 
 
-# =========================
-# AGENT
-# =========================
+# =====================================================
+# UNIFIED MULTI AGENT DSS
+# =====================================================
 
 class UnifiedAgent:
 
-    def __init__(self, memory):
-        self.memory = memory
+    def __init__(self, memory=None):
 
-    def run(self, text, caption, destination, tujuan):
+        self.story_agent = StorytellingAgent()
+        self.dss_agent = DSSAgent()
 
-        # =========================
-        # PROMPT UTAMA (MULTIMODAL STRONG)
-        # =========================
-        prompt = f"""
-Anda adalah sistem pendukung keputusan kebijakan ekowisata berbasis multimodal.
+    def run(self, text, caption, destination):
 
-ATURAN:
-- Fokus hanya pada destinasi: {destination}
-- Gunakan Bahasa Indonesia formal
-- WAJIB menggabungkan informasi dari teks DAN deskripsi gambar
-- WAJIB menyebut elemen visual dari gambar (objek, suasana, aktivitas)
-- DILARANG menambahkan detail visual yang tidak ada di caption
-- Dilarang membuat cerita umum yang tidak sesuai dengan gambar
-- Jika caption terbatas, gunakan deskripsi umum tanpa mengarang
-- Gunakan caption sebagai referensi, tetapi prioritaskan kesesuaian dengan destinasi
-- Jika caption tidak sesuai dengan destinasi, abaikan bagian yang tidak relevan
-- Jangan menyebut destinasi lain
-- Jika tidak yakin jumlah objek → gunakan deskripsi umum (misal: beberapa wisatawan)
-- Jangan menyebut jumlah atau gender jika tidak jelas
+        # =====================================================
+        # STEP 1 — STORYTELLING
+        # =====================================================
 
-ADAPTIF:
-- Jika teks pendek → buat storytelling singkat
-- Jika teks panjang → buat storytelling lebih detail
+        storytelling = self.story_agent.run(
+            text,
+            caption,
+            destination
+        )
 
-DATA:
-Teks wisatawan:
-Pengalaman wisata di {destination}.
-{text}
+        # =====================================================
+        # STEP 2 — DSS REASONING
+        # =====================================================
 
-Deskripsi gambar:
-{caption}
+        dss_result = self.dss_agent.run(
+            storytelling,
+            destination
+        )
 
-TUJUAN KEBIJAKAN:
-{tujuan}
+        # =====================================================
+        # STEP 3 — AGENTIC CONTROL
+        # =====================================================
 
-TUGAS:
-Buat SATU paragraf storytelling yang mengalir dan menyatu
-
-
-ATURAN:
-- Gabungkan pengalaman wisata, deskripsi visual gambar, dan isu secara alami dalam satu narasi
-- Jangan memisahkan menjadi beberapa paragraf
-- Jangan menjelaskan gambar secara terpisah
-- Jangan menggunakan kalimat seperti "Gambar menunjukkan..."
-- Narasi harus terasa seperti cerita utuh, bukan laporan
-- Berikan 3 rekomendasi kebijakan yang relevan
-
-FORMAT OUTPUT (WAJIB):
-
-(Tuliskan narasi wisata yang alami dan imersif, tidak harus diawali dengan kalimat tertentu)
-
-🏛️ Rekomendasi Kebijakan:
-1. ...
-2. ...
-3. ...
-"""
-
-        # =========================
-        # SYSTEM PROMPT (PENGUAT PERILAKU)
-        # =========================
-        system_prompt = f"""
-Anda hanya membahas {destination}.
-
-WAJIB:
-- Gunakan Bahasa Indonesia
-- Gunakan informasi dari teks dan deskripsi gambar
-- Jika gambar menunjukkan objek tertentu, sebutkan dalam cerita
-- Jangan membuat narasi umum
-- Ikuti format output dengan tepat
-- Jangan menambahkan interpretasi visual yang tidak ada
-- Jangan mengarang objek seperti "reruntuhan kota" jika tidak disebut
-- Jika informasi tidak relevan dengan {destination}, jawab:
-  "Maaf, input tidak sesuai dengan destinasi yang dipilih."
-"""
-
-        # =========================
-        # CALL LLM
-        # =========================
-        result = call_llm(system_prompt, prompt)
-
-        # =========================
-        # CLEANING OUTPUT (BACKUP)
-        # =========================
-        bad_words = [
-            "Destinasi Wisata",
-            "destinasi wisata",
-            "Tempat ini",
-            "tempat ini",
-            "Lokasi ini",
-            "lokasi ini"
-        ]
-
-        for w in bad_words:
-            result = result.replace(w, destination)
-
-        hallucination_words = [
-            "reruntuhan kota",
-            "kota tua",
-            "ancient city",
-            "old ruins"
-        ]
-
-        for w in hallucination_words:
-            result = result.replace(w, "")
-
-        # hapus pola jawaban model yang sering muncul
-        if "Berikut adalah" in result:
-            result = result.replace("Berikut adalah tugas yang telah saya lakukan:", "")
-
-        if "Based on the input provided," in result:
-            result = result.replace("Based on the input provided,", "")
-
-        # =========================
-        # DEBUG (SANGAT DISARANKAN)
-        # =========================
-        print("DEBUG DESTINATION:", destination)
-        print("DEBUG CAPTION:", caption)
-        print("DEBUG RESULT:", result)
-
-        #return result
-
-        # =========================
-        # AGENTIC CONTROL 
-        # =========================
         max_iter = 2
 
         for i in range(max_iter):
-            issues = check_issues(result, destination)
 
-            print(f"AGENT LOOP {i}:", issues)
+            issues = check_issues(
+                dss_result,
+                destination
+            )
+
+            print(f"AGENTIC LOOP {i}:", issues)
 
             if not issues:
                 break
 
-            result = refine_output(result, issues, destination)
+            dss_result = refine_output(
+                dss_result,
+                issues,
+                destination
+            )
 
-        return result
+        # =====================================================
+        # FINAL OUTPUT
+        # =====================================================
+
+        final_output = f"""
+{storytelling}
+
+###DSS###
+
+{dss_result}
+"""
+
+        return final_output
