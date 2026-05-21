@@ -313,6 +313,53 @@ div[data-baseweb="select"] {
     display: none;
 }
 
+/* =========================================
+ROBOT CONTAINER
+========================================= */
+
+.robot-container {
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    margin-top: 40px;
+}
+
+/* =========================================
+ROBOT IMAGE
+========================================= */
+
+.robot-container img {
+
+    filter:
+        drop-shadow(0 0 25px rgba(168,85,247,0.45));
+
+    animation:
+        floatingRobot 4s ease-in-out infinite;
+}
+
+/* =========================================
+FLOATING ANIMATION
+========================================= */
+
+@keyframes floatingRobot {
+
+    0% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-12px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+}
+
 footer {
     visibility: hidden;
 }
@@ -545,14 +592,18 @@ def validate_destination(text, caption, destinasi):
 # </div>
 # """, unsafe_allow_html=True)
 
-col1, col2 = st.columns([1, 2])
+col1, col2 = st.columns([1.2, 4])
 
 with col1:
 
+    st.markdown("<div class='robot-container'>", unsafe_allow_html=True)
+
     st.image(
-        "logo.png",
-        width=260
+        "assets/robot.png",
+        width=320
     )
+
+    st.markdown("</div>", unsafe_allow_html=True)
 
 with col2:
 
@@ -572,6 +623,34 @@ with col2:
         adaptif, dan berbasis data.
     </div>
     """, unsafe_allow_html=True)
+
+# col1, col2 = st.columns([1, 2])
+
+# with col1:
+
+#     st.image(
+#         "logo.png",
+#         width=260
+#     )
+
+# with col2:
+
+#     st.markdown("""
+#     <div class='hero-badge'>
+#         AI STORYTELLING ENGINE
+#     </div>
+
+#     <div class='hero-title'>
+#         Storytelling Multimodal untuk <br>
+#         Agentic Decision Support System Pariwisata
+#     </div>
+
+#     <div class='hero-subtitle'>
+#         Integrasi storytelling multimodal berbasis Large Language Models 
+#         untuk mendukung pengambilan keputusan pariwisata yang cerdas, 
+#         adaptif, dan berbasis data.
+#     </div>
+#     """, unsafe_allow_html=True)
 
 text = st.text_area("📝 Masukkan teks wisata")
 
