@@ -401,9 +401,9 @@ def validate_destination(text, caption, destinasi):
             "water"
         ],
 
-        "Riam Berawan't": [
+        "Riam Berawan": [
             "riam",
-            "berawan't",
+            "berawan",
             "air terjun",
             "sungai",
             "arus"
