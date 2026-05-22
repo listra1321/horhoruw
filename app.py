@@ -479,7 +479,7 @@ image_file = st.file_uploader("📷 Upload gambar")
 DESTINASI_VALID = [
     "Danau Toba",
     "Candi Borobudur",
-    "Riam Berawan't",
+    "Riam Berawan",
     "Sepadang Hill"
 ]
 
