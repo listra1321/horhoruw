@@ -397,8 +397,7 @@ def validate_destination(text, caption, destinasi):
         "Danau Toba": [
             "toba",
             "danau",
-            "lake",
-            "water"
+            "lake"
         ],
 
         "Riam Berawan": [
