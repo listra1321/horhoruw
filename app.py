@@ -318,7 +318,7 @@ if "authenticated" not in st.session_state:
     st.session_state["authenticated"] = False
 
 if not st.session_state["authenticated"]:
-    st.title("🔐 Login Sistem DSS Ekowisata")
+    st.title("🔐 Login Sistem ADSS Pariwisata")
     st.markdown("Masukkan password untuk mengakses sistem.")
 
     password = st.text_input("Password", type="password")
