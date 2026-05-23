@@ -119,51 +119,96 @@ class DSSAgent:
     def run(self, storytelling, destination):
 
         system_prompt = f"""
-    Anda adalah Agentic Decision Support System (DSS) untuk pariwisata indonesia.
+    Anda adalah sistem kecerdasan buatan murni (Agentic Decision Support System) yang bertugas mengekstrak keputusan tata kelola destinasi wisata berbasis bukti empiris pengalaman wisatawan.
     
-    Fokus hanya pada:
-    {destination}
+    Fokus Analisis: {destination}
     
-    ATURAN PENTING:
-    - Gunakan hanya informasi yang muncul pada storytelling
-    - Jangan menambahkan konsep baru yang tidak ada pada storytelling
-    - Jangan membuat promosi wisata
-    - Jangan mengulang storytelling
-    - Jangan menjadi narasi wisata lagi
-    - Output hanya satu paragraf
-    - Gunakan Bahasa Indonesia yang natural dan reflektif
-    - Fokus pada pengambilan keputusan berdasarkan pengalaman wisatawan
-    - DSS harus menjelaskan hal yang perlu dipertahankan, diperhatikan, atau diperbaiki berdasarkan pengalaman wisata
-    - Gunakan detail pengalaman wisata sebagai dasar analisis
-    - Hindari istilah akademik umum yang tidak relevan dengan storytelling
-    - Hindari bahasa template AI seperti:
-      "oleh karena itu"
-      "dengan demikian"
-      "dapat disimpulkan"
+    BATASAN KETAT (CRITICAL CONSTRAINTS):
+    1. HANYA gunakan fakta eksplisit dari teks STORYTELLING. Jangan berasumsi, memproyeksi, atau menambah isu baru (seperti sampah, akses jalan, masyarakat lokal, ekowisata) jika tidak tertulis di STORYTELLING.
+    2. JANGAN mengulang narasi/cerita ulang pengalaman wisatawan. Sifat output adalah ANALISIS REKOMENDASI MANAJEMEN.
+    3. JANGAN membuat kalimat promosi, brosur, atau narasi estetis baru.
+    4. GAYA BAHASA: Gunakan Bahasa Indonesia yang lugas, profesional, analitis, namun mengalir natural (human-like).
+    5. OUTPUT: Wajib berupa SATU PARAGRAF padat (maksimal 3-4 kalimat).
+    
+    LARANGAN KERAS:
+    - Jangan gunakan kata penghubung template AI: "oleh karena itu", "dengan demikian", "dapat disimpulkan", "berdasarkan hal tersebut", "kesimpulannya".
+    - Jangan gunakan istilah jargon akademis yang terlalu luas/mengambang jika tidak relevan dengan teks.
     """
     
         user_prompt = f"""
-    STORYTELLING:
-    {storytelling}
+    BERIKUT ADALAH DATA UTAMA YANG WAJIB DIANALSIS:
+    STORYTELLING: 
+    "{storytelling}"
     
-    TUGAS:
-    Buat satu paragraf hasil Agentic DSS berdasarkan storytelling tersebut.
+    TUGAS ANDA:
+    Hasilkan satu paragraf analisis keputusan pengelolaan destinasi (DSS) dengan formula terstruktur berikut (kerjakan secara implisit dalam satu paragraf):
+    1. Identifikasi aspek utama yang memicu kepuasan wisatawan dari storytelling (apa yang berhasil/bagus).
+    2. Tentukan keputusan tata kelola operasional untuk mempertahankan/menjaga aspek tersebut agar tidak rusak oleh overtourism atau salah kelola.
     
-    Fokus pada:
-    - keputusan pengelolaan destinasi,
-    - hal penting dari pengalaman wisatawan,
-    - aspek yang perlu dijaga atau diperhatikan,
-    berdasarkan storytelling.
+    CONTOH OUTPUT YANG BENAR (Gunakan gaya bahasa seperti ini):
+    "Manajemen {destination} harus memprioritaskan pemeliharaan atmosfer area sekitar dan perlindungan visual kemegahan arsitektur untuk mempertahankan daya tarik utama berupa kenyamanan suasana dan estetika visual yang dirasakan wisatawan. Keputusan taktis perlu diarahkan pada pengaturan alur pengunjung di titik-titik swafoto favorit agar keasrian lingkungan dan kelegaan ruang tetap terjaga tanpa mengurangi kebebasan wisatawan dalam mengabadikan momen."
     
-    Jangan membuat storytelling baru.
+    Instruksi: Sesuai dengan format contoh di atas, buatlah hasil Agentic DSS untuk {destination} sekarang dalam satu paragraf tanpa kata terlarang.
     """
     
         result = call_llm(system_prompt, user_prompt)
-    
+        
+        # Post-processing untuk memastikan kebersihan format
         result = result.replace("\n", " ")
         result = " ".join(result.split())
-    
+        
         return result
+
+# class DSSAgent:
+
+#     def run(self, storytelling, destination):
+
+#         system_prompt = f"""
+#     Anda adalah Agentic Decision Support System (DSS) untuk pariwisata indonesia.
+    
+#     Fokus hanya pada:
+#     {destination}
+    
+#     ATURAN PENTING:
+#     - Gunakan hanya informasi yang muncul pada storytelling
+#     - Jangan menambahkan konsep baru yang tidak ada pada storytelling
+#     - Jangan membuat promosi wisata
+#     - Jangan mengulang storytelling
+#     - Jangan menjadi narasi wisata lagi
+#     - Output hanya satu paragraf
+#     - Gunakan Bahasa Indonesia yang natural dan reflektif
+#     - Fokus pada pengambilan keputusan berdasarkan pengalaman wisatawan
+#     - DSS harus menjelaskan hal yang perlu dipertahankan, diperhatikan, atau diperbaiki berdasarkan pengalaman wisata
+#     - Gunakan detail pengalaman wisata sebagai dasar analisis
+#     - Hindari istilah akademik umum yang tidak relevan dengan storytelling
+#     - Hindari bahasa template AI seperti:
+#       "oleh karena itu"
+#       "dengan demikian"
+#       "dapat disimpulkan"
+#     """
+    
+#         user_prompt = f"""
+#     STORYTELLING:
+#     {storytelling}
+    
+#     TUGAS:
+#     Buat satu paragraf hasil Agentic DSS berdasarkan storytelling tersebut.
+    
+#     Fokus pada:
+#     - keputusan pengelolaan destinasi,
+#     - hal penting dari pengalaman wisatawan,
+#     - aspek yang perlu dijaga atau diperhatikan,
+#     berdasarkan storytelling.
+    
+#     Jangan membuat storytelling baru.
+#     """
+    
+#         result = call_llm(system_prompt, user_prompt)
+    
+#         result = result.replace("\n", " ")
+#         result = " ".join(result.split())
+    
+#         return result
 
 
 # =====================================================
