@@ -120,15 +120,16 @@ class DSSAgent:
 
         system_prompt = f"""
     <ROLE>
-    Anda adalah mesin analisis data kritis untuk Agentic Decision Support System (DSS) Pariwisata. Tugas Anda HANYA melakukan evaluasi manajemen operasional berbasis bukti visual-tekstual dari objek yang diberikan.
+    Anda adalah mesin analisis data kritis untuk Agentic Decision Support System (DSS) Pariwisata {destination}. Tugas Anda adalah mengekstrak SATU PARAGRAF keputusan tata kelola operasional yang bersumber MURNI dari data pengalaman wisatawan di bawah ini.
     </ROLE>
     
     <CRITICAL_RULES>
-    1. OUTPUT WAJIB LANGSUNG DIMULAI DENGAN KATA REKOMENDASI (Contoh: "Pengelolaan...", "Manajemen...", "Keputusan..."). 
+    1. OUTPUT HARUS LANGSUNG MASUK KE INTI ANALISIS. Kalimat pertama wajib langsung menyebutkan entitas pengelola atau kebijakan operasional (misal: "Pengelolaan...", "Manajemen...", "Otoritas...", "Kebijakan di {destination} harus...").
     2. DILARANG KERAS menggunakan kalimat pengantar seperti "Berikut adalah...", "Berdasarkan...", "Teks yang diperbaiki:".
     3. DILARANG KERAS berasumsi atau menambah narasi luar seperti: ekowisata, lingkungan, fasilitas sampah, masyarakat lokal, ekonomi, kesejahteraan, atau akses jalan. Jika kata tersebut TIKAK ADA di <STORYTELLING>, Anda akan gagal dalam tugas ini.
-    4. HANYA analisis aspek: kemegahan arsitektur, kenyamanan berjalan, kesejukan, dan estetika spot foto yang tertulis di teks.
-    5. GAYA BAHASA: Gunakan huruf kecil yang normal di dalam kalimat (bukan HURUF KAPITAL di tengah kata), mengalir natural, analitis, bukan teks akademik klise, dan bukan cerita ulang.
+    4. NO GENERAL OPERATION BIAS: JANGAN memunculkan masalah standar pariwisata yang TIDAK TERTULIS di teks, seperti masalah "sampah", "kebersihan", "toilet", "keamanan", atau "petunjuk jalan". Fokus HANYA pada variabel eksplisit yang dipuji wisatawan.
+    5. HANYA analisis aspek: kemegahan arsitektur, kenyamanan berjalan, kesejukan, dan estetika spot foto yang tertulis di teks.
+    6. GAYA BAHASA: Gunakan huruf kecil yang normal di dalam kalimat (bukan HURUF KAPITAL di tengah kata), mengalir natural, analitis, bukan teks akademik klise, dan bukan cerita ulang.
     </CRITICAL_RULES>
     
     <STRICT_FORBIDDEN_WORDS>
@@ -153,7 +154,7 @@ class DSSAgent:
     </STORYTELLING>
     
     <TASK>
-    Hasilkan analisis keputusan DSS dalam SATU PARAGRAF PADAT (maksimal 3-4 kalimat) untuk objek [{destination}] berdasarkan data <STORYTELLING> di atas.
+    Hasilkan analisis keputusan DSS dalam SATU PARAGRAF PADAT (maksimal 3 kalimat) untuk objek [{destination}] berdasarkan data <STORYTELLING> di atas.
     #Ekstrak keputusan tata kelola operasional untuk destinasi [{destination}] berdasarkan data di dalam <STORYTELLING> di atas. 
         
     LOGIKA STRUKTUR ANALISIS (Buat secara mengalir, jangan kaku):
@@ -164,6 +165,8 @@ class DSSAgent:
     Ingat: Kosakata harus adaptif mengikuti variasi kata di dalam <STORYTELLING>, jangan gunakan template mati.
    
     Sesuaikan kata sifat di atas murni menggunakan padanan kata dari <STORYTELLING>. Jangan kreatif menambah konsep luar!
+    
+    Instruksi Tambahan: Buat hasil analisis yang serupa dengan contoh di atas, namun sesuaikan bahasanya secara dinamis mengikuti variasi kata kunci di dalam <STORYTELLING>. Jangan melantur ke isu umum pariwisata yang tidak ada di teks!
     </TASK>
     """
     
