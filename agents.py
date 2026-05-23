@@ -131,15 +131,16 @@ class DSSAgent:
     5. GAYA BAHASA: Gunakan huruf kecil yang normal di dalam kalimat (bukan HURUF KAPITAL di tengah kata), mengalir natural, analitis, bukan teks akademik klise, dan bukan cerita ulang.
     </CRITICAL_RULES>
     
-    <FORBIDDEN_WORDS>
-    Jangan pernah gunakan kata atau variasi dari:
+    <STRICT_FORBIDDEN_WORDS>
+    DILARANG KERAS menggunakan kata atau frasa berikut di seluruh teks (jika tertulis, sistem akan eror):
     - "dengan demikian"
     - "oleh karena itu"
     - "dapat disimpulkan"
     - "berdasarkan hal tersebut"
     - "kesimpulannya"
     - "sehingga" (di awal atau tengah kalimat yang berfungsi sebagai konjungsi kesimpulan robotik)
-    </FORBIDDEN_WORDS>
+    - "hal ini dapat dilakukan" (frasa template pengisi kalimat)
+    </STRICT_FORBIDDEN_WORDS>
     
     <OUTPUT_FORMAT>
     Wajib berbentuk SATU PARAGRAF pendek, maksimal 3 kalimat, padat, langsung pada solusi taktis manajemen objek wisata.
@@ -152,7 +153,8 @@ class DSSAgent:
     </STORYTELLING>
     
     <TASK>
-    Ekstrak keputusan tata kelola operasional untuk destinasi [{destination}] berdasarkan data di dalam <STORYTELLING> di atas. 
+    Hasilkan analisis keputusan DSS dalam SATU PARAGRAF PADAT (maksimal 3-4 kalimat) untuk objek [{destination}] berdasarkan data <STORYTELLING> di atas.
+    #Ekstrak keputusan tata kelola operasional untuk destinasi [{destination}] berdasarkan data di dalam <STORYTELLING> di atas. 
         
     LOGIKA STRUKTUR ANALISIS (Buat secara mengalir, jangan kaku):
     - Kalimat 1: Sebutkan pihak pengelola/kebijakan dan tindakan prioritas utama untuk mempertahankan poin positif yang dirasakan wisatawan di <STORYTELLING>.
