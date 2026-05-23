@@ -128,7 +128,7 @@ class DSSAgent:
     2. DILARANG KERAS menggunakan kalimat pengantar seperti "Berikut adalah...", "Berdasarkan...", "Teks yang diperbaiki:".
     3. DILARANG KERAS berasumsi atau menambah narasi luar seperti: ekowisata, lingkungan, fasilitas sampah, masyarakat lokal, ekonomi, kesejahteraan, atau akses jalan. Jika kata tersebut TIKAK ADA di <STORYTELLING>, Anda akan gagal dalam tugas ini.
     4. HANYA analisis aspek: kemegahan arsitektur, kenyamanan berjalan, kesejukan, dan estetika spot foto yang tertulis di teks.
-    5. GAYA BAHASA: 100% Analisis Manajemen Ops, bukan teks akademik klise, dan bukan cerita ulang.
+    5. GAYA BAHASA: Gunakan huruf kecil yang normal di dalam kalimat (bukan HURUF KAPITAL di tengah kata), mengalir natural, analitis, bukan teks akademik klise, dan bukan cerita ulang.
     </CRITICAL_RULES>
     
     <FORBIDDEN_WORDS>
@@ -153,11 +153,15 @@ class DSSAgent:
     
     <TASK>
     Ekstrak keputusan tata kelola operasional untuk destinasi [{destination}] berdasarkan data di dalam <STORYTELLING> di atas. 
+        
+    LOGIKA STRUKTUR ANALISIS (Buat secara mengalir, jangan kaku):
+    - Kalimat 1: Sebutkan pihak pengelola/kebijakan dan tindakan prioritas utama untuk mempertahankan poin positif yang dirasakan wisatawan di <STORYTELLING>.
+    - Kalimat 2: Hubungkan tindakan tersebut dengan upaya menjaga atmosfer atau kenyamanan spesifik yang tertulis di teks.
+    - Kalimat 3: Berikan rekomendasi keputusan taktis di lapangan (misalnya terkait pengaturan spot foto, alur jalan, atau pemeliharaan fisik objek) agar kepuasan wisatawan tetap konsisten.
     
-    Ikuti struktur pola kalimat di bawah ini secara presisi:
-    "Manajemen {destination} harus memprioritaskan pemeliharaan fisik [Aspek Arsitektur/Fisik] dan pengaturan kenyamanan alur pergerakan wisatawan untuk menjaga aspek [Aspek Suasana/Rasa] yang dirasakan pengunjung. Keputusan taktis perlu diarahkan pada perlindungan keasrian spot swafoto estetik agar orisinalitas objek tetap bertahan tanpa mengurangi ruang gerak wisatawan."
-    
-    Isi bagian dalam tanda kurung siku [] murni menggunakan kata kunci dari <STORYTELLING> (megah, indah, sejuk, estetik, tenang, damai, nyaman). Jangan kreatif menambah konsep luar!
+    Ingat: Kosakata harus adaptif mengikuti variasi kata di dalam <STORYTELLING>, jangan gunakan template mati.
+   
+    Sesuaikan kata sifat di atas murni menggunakan padanan kata dari <STORYTELLING>. Jangan kreatif menambah konsep luar!
     </TASK>
     """
     
