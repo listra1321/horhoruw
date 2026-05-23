@@ -398,6 +398,7 @@ def validate_destination(text, caption, destinasi):
             "toba",
             "danau",
             "brastagi air terjun sipiso",
+            "simarjarunjung",
             "lake"
         ],
 
