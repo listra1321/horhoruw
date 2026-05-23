@@ -119,41 +119,54 @@ class DSSAgent:
     def run(self, storytelling, destination):
 
         system_prompt = f"""
-    Anda adalah sistem kecerdasan buatan murni (Agentic Decision Support System) yang bertugas mengekstrak keputusan tata kelola destinasi wisata berbasis bukti empiris pengalaman wisatawan.
+    <ROLE>
+    Anda adalah mesin analisis data kritis untuk Agentic Decision Support System (DSS) Pariwisata. Tugas Anda HANYA melakukan evaluasi manajemen operasional berbasis bukti visual-tekstual dari objek yang diberikan.
+    </ROLE>
     
-    Fokus Analisis: {destination}
+    <CRITICAL_RULES>
+    1. OUTPUT WAJIB LANGSUNG DIMULAI DENGAN KATA REKOMENDASI (Contoh: "Pengelolaan...", "Manajemen...", "Keputusan..."). 
+    2. DILARANG KERAS menggunakan kalimat pengantar seperti "Berikut adalah...", "Berdasarkan...", "Teks yang diperbaiki:".
+    3. DILARANG KERAS berasumsi atau menambah narasi luar seperti: ekowisata, lingkungan, fasilitas sampah, masyarakat lokal, ekonomi, kesejahteraan, atau akses jalan. Jika kata tersebut TIKAK ADA di <STORYTELLING>, Anda akan gagal dalam tugas ini.
+    4. HANYA analisis aspek: kemegahan arsitektur, kenyamanan berjalan, kesejukan, dan estetika spot foto yang tertulis di teks.
+    5. GAYA BAHASA: 100% Analisis Manajemen Ops, bukan teks akademik klise, dan bukan cerita ulang.
+    </CRITICAL_RULES>
     
-    BATASAN KETAT (CRITICAL CONSTRAINTS):
-    1. HANYA gunakan fakta eksplisit dari teks STORYTELLING. Jangan berasumsi, memproyeksi, atau menambah isu baru (seperti sampah, akses jalan, masyarakat lokal, ekowisata) jika tidak tertulis di STORYTELLING.
-    2. JANGAN mengulang narasi/cerita ulang pengalaman wisatawan. Sifat output adalah ANALISIS REKOMENDASI MANAJEMEN.
-    3. JANGAN membuat kalimat promosi, brosur, atau narasi estetis baru.
-    4. GAYA BAHASA: Gunakan Bahasa Indonesia yang lugas, profesional, analitis, namun mengalir natural (human-like).
-    5. OUTPUT: Wajib berupa SATU PARAGRAF padat (maksimal 3-4 kalimat).
+    <FORBIDDEN_WORDS>
+    Jangan pernah gunakan kata atau variasi dari:
+    - "dengan demikian"
+    - "oleh karena itu"
+    - "dapat disimpulkan"
+    - "berdasarkan hal tersebut"
+    - "kesimpulannya"
+    - "sehingga" (di awal atau tengah kalimat yang berfungsi sebagai konjungsi kesimpulan robotik)
+    </FORBIDDEN_WORDS>
     
-    LARANGAN KERAS:
-    - Jangan gunakan kata penghubung template AI: "oleh karena itu", "dengan demikian", "dapat disimpulkan", "berdasarkan hal tersebut", "kesimpulannya".
-    - Jangan gunakan istilah jargon akademis yang terlalu luas/mengambang jika tidak relevan dengan teks.
+    <OUTPUT_FORMAT>
+    Wajib berbentuk SATU PARAGRAF pendek, maksimal 3 kalimat, padat, langsung pada solusi taktis manajemen objek wisata.
+    </OUTPUT_FORMAT>
     """
     
         user_prompt = f"""
-    BERIKUT ADALAH DATA UTAMA YANG WAJIB DIANALSIS:
-    STORYTELLING: 
+    <STORYTELLING>
     "{storytelling}"
+    </STORYTELLING>
     
-    TUGAS ANDA:
-    Hasilkan satu paragraf analisis keputusan pengelolaan destinasi (DSS) dengan formula terstruktur berikut (kerjakan secara implisit dalam satu paragraf):
-    1. Identifikasi aspek utama yang memicu kepuasan wisatawan dari storytelling (apa yang berhasil/bagus).
-    2. Tentukan keputusan tata kelola operasional untuk mempertahankan/menjaga aspek tersebut agar tidak rusak oleh overtourism atau salah kelola.
+    <TASK>
+    Ekstrak keputusan tata kelola operasional untuk destinasi [{destination}] berdasarkan data di dalam <STORYTELLING> di atas. 
     
-    CONTOH OUTPUT YANG BENAR (Gunakan gaya bahasa seperti ini):
-    "Manajemen {destination} harus memprioritaskan pemeliharaan atmosfer area sekitar dan perlindungan visual kemegahan arsitektur untuk mempertahankan daya tarik utama berupa kenyamanan suasana dan estetika visual yang dirasakan wisatawan. Keputusan taktis perlu diarahkan pada pengaturan alur pengunjung di titik-titik swafoto favorit agar keasrian lingkungan dan kelegaan ruang tetap terjaga tanpa mengurangi kebebasan wisatawan dalam mengabadikan momen."
+    Ikuti struktur pola kalimat di bawah ini secara presisi:
+    "Manajemen {destination} harus memprioritaskan pemeliharaan fisik [Aspek Arsitektur/Fisik] dan pengaturan kenyamanan alur pergerakan wisatawan untuk menjaga aspek [Aspek Suasana/Rasa] yang dirasakan pengunjung. Keputusan taktis perlu diarahkan pada perlindungan keasrian spot swafoto estetik agar orisinalitas objek tetap bertahan tanpa mengurangi ruang gerak wisatawan."
     
-    Instruksi: Sesuai dengan format contoh di atas, buatlah hasil Agentic DSS untuk {destination} sekarang dalam satu paragraf tanpa kata terlarang.
+    Isi bagian dalam tanda kurung siku [] murni menggunakan kata kunci dari <STORYTELLING> (megah, indah, sejuk, estetik, tenang, damai, nyaman). Jangan kreatif menambah konsep luar!
+    </TASK>
     """
     
         result = call_llm(system_prompt, user_prompt)
         
-        # Post-processing untuk memastikan kebersihan format
+        # Post-processing tambahan (Guardsafe) untuk memotong jika LLM masih nakal memberi pengantar
+        if ":" in result and len(result.split(":")[0]) < 30:
+            result = result.split(":", 1)[1].strip()
+            
         result = result.replace("\n", " ")
         result = " ".join(result.split())
         
