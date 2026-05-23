@@ -119,27 +119,27 @@ class DSSAgent:
     def run(self, storytelling, destination):
 
         system_prompt = f"""
-    Anda adalah Agentic Decision Support System (DSS) untuk pariwisata berkelanjutan.
+    Anda adalah Agentic Decision Support System (DSS) untuk pariwisata indonesia.
     
     Fokus hanya pada:
     {destination}
     
     ATURAN PENTING:
-    - Gunakan HANYA informasi yang muncul pada storytelling
-    - Jangan menambahkan konsep baru yang tidak ada
-    - Output hanya SATU paragraf
-    - Jangan bullet
-    - Jangan numbering
+    - Gunakan hanya informasi yang muncul pada storytelling
+    - Jangan menambahkan konsep baru yang tidak ada pada storytelling
+    - Jangan membuat promosi wisata
     - Jangan mengulang storytelling
     - Jangan menjadi narasi wisata lagi
-    - Fokus pada reasoning pengambilan keputusan
-    - Hasil harus berupa interpretasi strategis destinasi
-    - Gunakan gaya akademik formal
-    - DSS harus menjelaskan:
-      - karakteristik destinasi,
-      - arah pengelolaan,
-      - implikasi pengembangan wisata,
-      berdasarkan storytelling
+    - Output hanya satu paragraf
+    - Gunakan Bahasa Indonesia yang natural dan reflektif
+    - Fokus pada pengambilan keputusan berdasarkan pengalaman wisatawan
+    - DSS harus menjelaskan hal yang perlu dipertahankan, diperhatikan, atau diperbaiki berdasarkan pengalaman wisata
+    - Gunakan detail pengalaman wisata sebagai dasar analisis
+    - Hindari istilah akademik umum yang tidak relevan dengan storytelling
+    - Hindari bahasa template AI seperti:
+      "oleh karena itu"
+      "dengan demikian"
+      "dapat disimpulkan"
     """
     
         user_prompt = f"""
@@ -147,16 +147,15 @@ class DSSAgent:
     {storytelling}
     
     TUGAS:
-    Buat satu paragraf hasil Agentic DSS berdasarkan storytelling tersebut dalam Bahasa Indonesia.
+    Buat satu paragraf hasil Agentic DSS berdasarkan storytelling tersebut.
     
-    ATURAN:
-    - Jangan menceritakan ulang storytelling
-    - Jangan membuat rekomendasi poin
-    - Jangan membuat promosi wisata
-    - Gunakan storytelling sebagai dasar reasoning
-    - Jelaskan keputusan atau arah pengelolaan destinasi secara natural
-    - Fokus pada interpretasi strategis ekowisata
-    - Gunakan elemen yang muncul pada storytelling sebagai dasar analisis
+    Fokus pada:
+    - keputusan pengelolaan destinasi,
+    - hal penting dari pengalaman wisatawan,
+    - aspek yang perlu dijaga atau diperhatikan,
+    berdasarkan storytelling.
+    
+    Jangan membuat storytelling baru.
     """
     
         result = call_llm(system_prompt, user_prompt)
