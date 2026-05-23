@@ -397,8 +397,10 @@ def validate_destination(text, caption, destinasi):
         "Danau Toba": [
             "toba",
             "danau",
-            "brastagi air terjun sipiso",
+            "brastagi",
+            "sipiso",
             "simarjarunjung",
+            "parapat",
             "lake"
         ],
 
@@ -449,8 +451,8 @@ def validate_destination(text, caption, destinasi):
     # KONFLIK MULTI DESTINASI
     # =====================================================
 
-    if len(detected_destinations) > 1:
-        return False
+    # if len(detected_destinations) > 1:
+    #     return False
 
     return True
 
