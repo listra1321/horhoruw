@@ -574,7 +574,8 @@ if generate:
         #st.markdown("<div class='result-box'>", unsafe_allow_html=True)
         st.subheader("📄 Storytelling Wisata")
         
-        st.write(f"{emoji} {story.strip()}")
+        # st.write(f"{emoji} {story.strip()}") mematikan emoji
+        st.write(story.strip())
         
         st.caption(
             "Narasi storytelling multimodal berdasarkan integrasi teks wisatawan dan interpretasi visual gambar."
