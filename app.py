@@ -684,7 +684,7 @@ if generate:
                 
                 st.components.v1.html(
                     lime_html,
-                    height=500,
+                    height=250,
                     scrolling=True
                 )
         
@@ -779,7 +779,7 @@ if generate:
                 
                 st.components.v1.html(
                     lime_html_story,
-                    height=500,
+                    height=250,
                     scrolling=True
                 )
         
