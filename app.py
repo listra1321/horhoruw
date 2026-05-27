@@ -646,57 +646,66 @@ if generate:
                 # """
                 
                 # st.components.v1.html(lime_html, height=450, scrolling=True)
-                lime_html = f"""
+                lime_style = """
                 <style>
                 
-                body {{
+                body{
                     background: linear-gradient(
                         135deg,
-                        #0B1120,
-                        #111C44
+                        #020617,
+                        #0F172A
                     );
                 
-                    color: white;
+                    color:white;
                 
-                    font-family: Arial, sans-serif;
+                    padding:15px;
+                }
                 
-                    padding: 15px;
-                }}
+                /* chart container */
+                .js-plotly-plot,
+                .plotly,
+                svg{
+                    background: transparent !important;
+                }
                 
-                .main-svg {{
-                    background-color: rgba(15,23,42,0.85) !important;
+                /* semua tulisan */
+                text{
+                    fill:white !important;
+                    color:white !important;
                 
-                    border-radius: 18px;
+                    font-size:14px !important;
                 
-                    padding: 12px;
+                    font-weight:bold !important;
+                }
+                
+                /* BAR NEGATIF */
+                g.trace.bars path{
+                    fill:#38BDF8 !important;
+                }
+                
+                /* BAR POSITIF */
+                g.trace.bars:nth-child(2) path{
+                    fill:#F59E0B !important;
+                }
+                
+                /* glow effect */
+                .main-svg{
+                    border-radius:18px;
+                
+                    background:
+                        rgba(15,23,42,0.75) !important;
                 
                     box-shadow:
-                        0 0 20px rgba(56,189,248,0.15);
-                }}
+                        0 0 25px rgba(56,189,248,0.25);
                 
-                text {{
-                    fill: white !important;
-                
-                    color: white !important;
-                
-                    font-size: 14px !important;
-                }}
-                
-                div {{
-                    color: white !important;
-                }}
-                
-                table {{
-                    color: white !important;
-                }}
+                    padding:10px;
+                }
                 
                 </style>
-                
-                {exp_input.as_html()}
                 """
                 
                 st.components.v1.html(
-                    lime_html,
+                    lime_style + exp_input.as_html(),
                     height=500,
                     scrolling=True
                 )
@@ -754,57 +763,66 @@ if generate:
                 # """
                 
                 # st.components.v1.html(lime_html_story, height=450, scrolling=True)
-                lime_html_story = f"""
+                lime_style = """
                 <style>
                 
-                body {{
+                body{
                     background: linear-gradient(
                         135deg,
-                        #0B1120,
-                        #111C44
+                        #020617,
+                        #0F172A
                     );
                 
-                    color: white;
+                    color:white;
                 
-                    font-family: Arial, sans-serif;
+                    padding:15px;
+                }
                 
-                    padding: 15px;
-                }}
+                /* chart container */
+                .js-plotly-plot,
+                .plotly,
+                svg{
+                    background: transparent !important;
+                }
                 
-                .main-svg {{
-                    background-color: rgba(15,23,42,0.85) !important;
+                /* semua tulisan */
+                text{
+                    fill:white !important;
+                    color:white !important;
                 
-                    border-radius: 18px;
+                    font-size:14px !important;
                 
-                    padding: 12px;
+                    font-weight:bold !important;
+                }
+                
+                /* BAR NEGATIF */
+                g.trace.bars path{
+                    fill:#38BDF8 !important;
+                }
+                
+                /* BAR POSITIF */
+                g.trace.bars:nth-child(2) path{
+                    fill:#F59E0B !important;
+                }
+                
+                /* glow effect */
+                .main-svg{
+                    border-radius:18px;
+                
+                    background:
+                        rgba(15,23,42,0.75) !important;
                 
                     box-shadow:
-                        0 0 20px rgba(56,189,248,0.15);
-                }}
+                        0 0 25px rgba(56,189,248,0.25);
                 
-                text {{
-                    fill: white !important;
-                
-                    color: white !important;
-                
-                    font-size: 14px !important;
-                }}
-                
-                div {{
-                    color: white !important;
-                }}
-                
-                table {{
-                    color: white !important;
-                }}
+                    padding:10px;
+                }
                 
                 </style>
-                
-                {exp_story.as_html()}
                 """
                 
                 st.components.v1.html(
-                    lime_html_story,
+                    lime_style + exp_story.as_html(),
                     height=500,
                     scrolling=True
                 )
