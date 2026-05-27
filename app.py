@@ -646,66 +646,44 @@ if generate:
                 # """
                 
                 # st.components.v1.html(lime_html, height=450, scrolling=True)
-                lime_style = """
+                lime_html = f"""
                 <style>
                 
-                body{
-                    background: linear-gradient(
-                        135deg,
-                        #020617,
-                        #0F172A
-                    );
+                body {{
+                    background-color: white;
                 
-                    color:white;
+                    color: black;
                 
-                    padding:15px;
-                }
+                    padding: 15px;
                 
-                /* chart container */
-                .js-plotly-plot,
-                .plotly,
-                svg{
-                    background: transparent !important;
-                }
+                    font-family: Arial, sans-serif;
+                }}
                 
-                /* semua tulisan */
-                text{
-                    fill:white !important;
-                    color:white !important;
+                .main-svg {{
+                    background-color: white !important;
+                }}
                 
-                    font-size:14px !important;
+                text {{
+                    fill: black !important;
                 
-                    font-weight:bold !important;
-                }
+                    color: black !important;
+                }}
                 
-                /* BAR NEGATIF */
-                g.trace.bars path{
-                    fill:#38BDF8 !important;
-                }
+                div {{
+                    color: black !important;
+                }}
                 
-                /* BAR POSITIF */
-                g.trace.bars:nth-child(2) path{
-                    fill:#F59E0B !important;
-                }
-                
-                /* glow effect */
-                .main-svg{
-                    border-radius:18px;
-                
-                    background:
-                        rgba(15,23,42,0.75) !important;
-                
-                    box-shadow:
-                        0 0 25px rgba(56,189,248,0.25);
-                
-                    padding:10px;
-                }
+                table {{
+                    color: black !important;
+                }}
                 
                 </style>
+                
+                {exp_input.as_html()}
                 """
                 
                 st.components.v1.html(
-                    lime_style + exp_input.as_html(),
+                    lime_html,
                     height=500,
                     scrolling=True
                 )
@@ -763,66 +741,44 @@ if generate:
                 # """
                 
                 # st.components.v1.html(lime_html_story, height=450, scrolling=True)
-                lime_style = """
+                lime_html_story = f"""
                 <style>
                 
-                body{
-                    background: linear-gradient(
-                        135deg,
-                        #020617,
-                        #0F172A
-                    );
+                body {{
+                    background-color: white;
                 
-                    color:white;
+                    color: black;
                 
-                    padding:15px;
-                }
+                    padding: 15px;
                 
-                /* chart container */
-                .js-plotly-plot,
-                .plotly,
-                svg{
-                    background: transparent !important;
-                }
+                    font-family: Arial, sans-serif;
+                }}
                 
-                /* semua tulisan */
-                text{
-                    fill:white !important;
-                    color:white !important;
+                .main-svg {{
+                    background-color: white !important;
+                }}
                 
-                    font-size:14px !important;
+                text {{
+                    fill: black !important;
                 
-                    font-weight:bold !important;
-                }
+                    color: black !important;
+                }}
                 
-                /* BAR NEGATIF */
-                g.trace.bars path{
-                    fill:#38BDF8 !important;
-                }
+                div {{
+                    color: black !important;
+                }}
                 
-                /* BAR POSITIF */
-                g.trace.bars:nth-child(2) path{
-                    fill:#F59E0B !important;
-                }
-                
-                /* glow effect */
-                .main-svg{
-                    border-radius:18px;
-                
-                    background:
-                        rgba(15,23,42,0.75) !important;
-                
-                    box-shadow:
-                        0 0 25px rgba(56,189,248,0.25);
-                
-                    padding:10px;
-                }
+                table {{
+                    color: black !important;
+                }}
                 
                 </style>
+                
+                {exp_story.as_html()}
                 """
                 
                 st.components.v1.html(
-                    lime_style + exp_story.as_html(),
+                    lime_html_story,
                     height=500,
                     scrolling=True
                 )
