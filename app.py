@@ -265,6 +265,8 @@ def map_sentiment_to_emoji(label):
 from transformers import pipeline
 from lime.lime_text import LimeTextExplainer
 import numpy as np
+import shap
+import matplotlib.pyplot as plt
 
 # =========================
 # SENTIMENT MODEL
@@ -308,6 +310,40 @@ def explain_with_lime(text):
     )
     
     return exp
+
+# ======================================================
+# SHAP
+# ======================================================
+
+def predict_text(texts):
+
+    classifier = load_sentiment()
+
+    outputs = []
+
+    for t in texts:
+
+        result = classifier(t)[0]
+
+        if result['label'] == 'positive':
+            outputs.append([1-result['score'], result['score']])
+
+        else:
+            outputs.append([result['score'], 1-result['score']])
+
+    return np.array(outputs)
+
+
+def explain_with_shap(text):
+
+    explainer = shap.Explainer(
+        predict_text,
+        masker=shap.maskers.Text()
+    )
+
+    shap_values = explainer([text])
+
+    return shap_values
 
 # =========================
 # PASSWORD PROTECTION
@@ -785,6 +821,38 @@ if generate:
         
         except Exception as e:
             st.error(f"Error Story XAI: {e}")
+            
+        st.divider()
+
+        # ======================================================
+        # SHAP EXPLANATION
+        # ======================================================
+        
+        st.subheader("📈 SHAP Explanation")
+        
+        try:
+        
+            shap_values = explain_with_shap(text)
+        
+            shap_html = f"""
+            <div style="
+                background-color:white;
+                padding:15px;
+                border-radius:12px;
+            ">
+            {shap.plots.text(shap_values[0], display=False)}
+            </div>
+            """
+        
+            st.components.v1.html(
+                shap_html,
+                height=400,
+                scrolling=True
+            )
+        
+        except Exception as e:
+        
+            st.error(f"SHAP Error: {e}")
     
     else:
         st.warning("⚠️ Mohon lengkapi teks dan gambar.")
