@@ -596,57 +596,57 @@ if generate:
         st.markdown("</div>", unsafe_allow_html=True)
  
         
-    #     # ======================================================
-    #     # XAI 1: INPUT EXPLANATION
-    #     # ======================================================
-    #     st.subheader("📊 XAI - Input Explanation")
+        # ======================================================
+        # XAI 1: INPUT EXPLANATION
+        # ======================================================
+        st.subheader("📊 XAI - Input Explanation")
         
-    #     try:
-    #         exp_input = explain_with_lime(text)
-    #         explanation_input = exp_input.as_list()
+        try:
+            exp_input = explain_with_lime(text)
+            explanation_input = exp_input.as_list()
         
-    #         if not explanation_input:
-    #             st.warning("⚠️ Tidak ada fitur input yang dapat dijelaskan.")
-    #         else:
-    #             for word, weight in explanation_input:
-    #                 if weight > 0:
-    #                     st.markdown(f"🟢 **{word}** → +{weight:.3f}")
-    #                 else:
-    #                     st.markdown(f"🔴 **{word}** → {weight:.3f}")
+            if not explanation_input:
+                st.warning("⚠️ Tidak ada fitur input yang dapat dijelaskan.")
+            else:
+                for word, weight in explanation_input:
+                    if weight > 0:
+                        st.markdown(f"🟢 **{word}** → +{weight:.3f}")
+                    else:
+                        st.markdown(f"🔴 **{word}** → {weight:.3f}")
         
-    #             st.caption("Kontribusi fitur input terhadap pembentukan storytelling")
-    #             st.components.v1.html(exp_input.as_html(), height=150)
+                st.caption("Kontribusi fitur input terhadap pembentukan storytelling")
+                st.components.v1.html(exp_input.as_html(), height=150)
         
-    #     except Exception as e:
-    #         st.error(f"Error Input XAI: {e}")
+        except Exception as e:
+            st.error(f"Error Input XAI: {e}")
         
-    #     st.divider()
-    #     # ======================================================
-    #     # XAI 2: STORYTELLING EXPLANATION
-    #     # ======================================================
-    #     st.subheader("📊 XAI - Storytelling Explanation")
+        st.divider()
+        # ======================================================
+        # XAI 2: STORYTELLING EXPLANATION
+        # ======================================================
+        st.subheader("📊 XAI - Storytelling Explanation")
         
-    #     try:
-    #         exp_story = explain_with_lime(story)
-    #         explanation_story = exp_story.as_list()
+        try:
+            exp_story = explain_with_lime(story)
+            explanation_story = exp_story.as_list()
         
-    #         if not explanation_story:
-    #             st.warning("⚠️ Tidak ada fitur storytelling yang dapat dijelaskan.")
-    #         else:
-    #             for word, weight in explanation_story:
-    #                 if weight > 0:
-    #                     st.markdown(f"🟢 **{word}** → +{weight:.3f}")
-    #                 else:
-    #                     st.markdown(f"🔴 **{word}** → {weight:.3f}")
+            if not explanation_story:
+                st.warning("⚠️ Tidak ada fitur storytelling yang dapat dijelaskan.")
+            else:
+                for word, weight in explanation_story:
+                    if weight > 0:
+                        st.markdown(f"🟢 **{word}** → +{weight:.3f}")
+                    else:
+                        st.markdown(f"🔴 **{word}** → {weight:.3f}")
         
-    #             st.caption("Kontribusi kata dalam storytelling terhadap karakteristik narasi")
-    #             st.components.v1.html(exp_story.as_html(), height=280)
+                st.caption("Kontribusi kata dalam storytelling terhadap karakteristik narasi")
+                st.components.v1.html(exp_story.as_html(), height=280)
         
-    #     except Exception as e:
-    #         st.error(f"Error Story XAI: {e}")
+        except Exception as e:
+            st.error(f"Error Story XAI: {e}")
     
-    # else:
-    #     st.warning("⚠️ Mohon lengkapi teks dan gambar.")
+    else:
+        st.warning("⚠️ Mohon lengkapi teks dan gambar.")
 
 # ======================================================
 # Footer
