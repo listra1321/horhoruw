@@ -8,3 +8,5 @@ requests
 lime==0.2.0.1
 scikit-learn
 numpy
+shap
+matplotlib
