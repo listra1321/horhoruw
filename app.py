@@ -633,194 +633,138 @@ if generate:
         st.markdown("</div>", unsafe_allow_html=True)
  
         
-        # ======================================================
-        # XAI 1: INPUT EXPLANATION
-        # ======================================================
-        st.subheader("📊 XAI - Input Explanation")
+        # # ======================================================
+        # # XAI 1: INPUT EXPLANATION
+        # # ======================================================
+        # st.subheader("📊 XAI - Input Explanation")
         
-        try:
-            exp_input = explain_with_lime(text)
-            explanation_input = exp_input.as_list()
+        # try:
+        #     exp_input = explain_with_lime(text)
+        #     explanation_input = exp_input.as_list()
         
-            if not explanation_input:
-                st.warning("⚠️ Tidak ada fitur input yang dapat dijelaskan.")
-            else:
-                for word, weight in explanation_input:
-                    if weight > 0:
-                        st.markdown(f"🟢 **{word}** → +{weight:.3f}")
-                    else:
-                        st.markdown(f"🔴 **{word}** → {weight:.3f}")
+        #     if not explanation_input:
+        #         st.warning("⚠️ Tidak ada fitur input yang dapat dijelaskan.")
+        #     else:
+        #         for word, weight in explanation_input:
+        #             if weight > 0:
+        #                 st.markdown(f"🟢 **{word}** → +{weight:.3f}")
+        #             else:
+        #                 st.markdown(f"🔴 **{word}** → {weight:.3f}")
         
-                st.caption("Kontribusi fitur input terhadap pembentukan storytelling")
-                #st.components.v1.html(exp_input.as_html(), height=150)
-                # lime_html = f"""
-                # <style>
-                # body {{
-                #     background-color: #0F172A;
-                #     color: white;
-                # }}
+        #         st.caption("Kontribusi fitur input terhadap pembentukan storytelling")
+        #         #st.components.v1.html(exp_input.as_html(), height=150)
                 
-                # div {{
-                #     color: white !important;
-                # }}
+        #         lime_html = f"""
+        #         <style>
                 
-                # text {{
-                #     fill: white !important;
-                # }}
+        #         body {{
+        #             background-color: white;
                 
-                # svg text {{
-                #     fill: white !important;
-                # }}
+        #             color: black;
                 
-                # table {{
-                #     color: white !important;
-                # }}
+        #             padding: 15px;
                 
-                # </style>
+        #             font-family: Arial, sans-serif;
+        #         }}
                 
-                # {exp_input.as_html()}
-                # """
+        #         .main-svg {{
+        #             background-color: white !important;
+        #         }}
                 
-                # st.components.v1.html(lime_html, height=450, scrolling=True)
-                lime_html = f"""
-                <style>
+        #         text {{
+        #             fill: black !important;
                 
-                body {{
-                    background-color: white;
+        #             color: black !important;
+        #         }}
                 
-                    color: black;
+        #         div {{
+        #             color: black !important;
+        #         }}
                 
-                    padding: 15px;
+        #         table {{
+        #             color: black !important;
+        #         }}
                 
-                    font-family: Arial, sans-serif;
-                }}
+        #         </style>
                 
-                .main-svg {{
-                    background-color: white !important;
-                }}
+        #         {exp_input.as_html()}
+        #         """
                 
-                text {{
-                    fill: black !important;
-                
-                    color: black !important;
-                }}
-                
-                div {{
-                    color: black !important;
-                }}
-                
-                table {{
-                    color: black !important;
-                }}
-                
-                </style>
-                
-                {exp_input.as_html()}
-                """
-                
-                st.components.v1.html(
-                    lime_html,
-                    height=250,
-                    scrolling=True
-                )
+        #         st.components.v1.html(
+        #             lime_html,
+        #             height=250,
+        #             scrolling=True
+        #         )
         
-        except Exception as e:
-            st.error(f"Error Input XAI: {e}")
+        # except Exception as e:
+        #     st.error(f"Error Input XAI: {e}")
         
-        st.divider()
-        # ======================================================
-        # XAI 2: STORYTELLING EXPLANATION
-        # ======================================================
-        st.subheader("📊 XAI - Storytelling Explanation")
+        # st.divider()
+        # # ======================================================
+        # # XAI 2: STORYTELLING EXPLANATION
+        # # ======================================================
+        # st.subheader("📊 XAI - Storytelling Explanation")
         
-        try:
-            exp_story = explain_with_lime(story)
-            explanation_story = exp_story.as_list()
+        # try:
+        #     exp_story = explain_with_lime(story)
+        #     explanation_story = exp_story.as_list()
         
-            if not explanation_story:
-                st.warning("⚠️ Tidak ada fitur storytelling yang dapat dijelaskan.")
-            else:
-                for word, weight in explanation_story:
-                    if weight > 0:
-                        st.markdown(f"🟢 **{word}** → +{weight:.3f}")
-                    else:
-                        st.markdown(f"🔴 **{word}** → {weight:.3f}")
+        #     if not explanation_story:
+        #         st.warning("⚠️ Tidak ada fitur storytelling yang dapat dijelaskan.")
+        #     else:
+        #         for word, weight in explanation_story:
+        #             if weight > 0:
+        #                 st.markdown(f"🟢 **{word}** → +{weight:.3f}")
+        #             else:
+        #                 st.markdown(f"🔴 **{word}** → {weight:.3f}")
         
-                st.caption("Kontribusi kata dalam storytelling terhadap karakteristik narasi")
-                #st.components.v1.html(exp_story.as_html(), height=280)
-                # lime_html_story = f"""
-                # <style>
-                # body {{
-                #     background-color: #0F172A;
-                #     color: white;
-                # }}
+        #         st.caption("Kontribusi kata dalam storytelling terhadap karakteristik narasi")
+        #         #st.components.v1.html(exp_story.as_html(), height=280)
+               
+        #         lime_html_story = f"""
+        #         <style>
                 
-                # div {{
-                #     color: white !important;
-                # }}
+        #         body {{
+        #             background-color: white;
                 
-                # text {{
-                #     fill: white !important;
-                # }}
+        #             color: black;
                 
-                # svg text {{
-                #     fill: white !important;
-                # }}
+        #             padding: 15px;
                 
-                # table {{
-                #     color: white !important;
-                # }}
+        #             font-family: Arial, sans-serif;
+        #         }}
                 
-                # </style>
+        #         .main-svg {{
+        #             background-color: white !important;
+        #         }}
                 
-                # {exp_story.as_html()}
-                # """
+        #         text {{
+        #             fill: black !important;
                 
-                # st.components.v1.html(lime_html_story, height=450, scrolling=True)
-                lime_html_story = f"""
-                <style>
+        #             color: black !important;
+        #         }}
                 
-                body {{
-                    background-color: white;
+        #         div {{
+        #             color: black !important;
+        #         }}
                 
-                    color: black;
+        #         table {{
+        #             color: black !important;
+        #         }}
                 
-                    padding: 15px;
+        #         </style>
                 
-                    font-family: Arial, sans-serif;
-                }}
+        #         {exp_story.as_html()}
+        #         """
                 
-                .main-svg {{
-                    background-color: white !important;
-                }}
-                
-                text {{
-                    fill: black !important;
-                
-                    color: black !important;
-                }}
-                
-                div {{
-                    color: black !important;
-                }}
-                
-                table {{
-                    color: black !important;
-                }}
-                
-                </style>
-                
-                {exp_story.as_html()}
-                """
-                
-                st.components.v1.html(
-                    lime_html_story,
-                    height=250,
-                    scrolling=True
-                )
+        #         st.components.v1.html(
+        #             lime_html_story,
+        #             height=250,
+        #             scrolling=True
+        #         )
         
-        except Exception as e:
-            st.error(f"Error Story XAI: {e}")
+        # except Exception as e:
+        #     st.error(f"Error Story XAI: {e}")
             
         # st.divider()
 
