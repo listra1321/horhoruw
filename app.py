@@ -617,23 +617,73 @@ if generate:
         
                 st.caption("Kontribusi fitur input terhadap pembentukan storytelling")
                 #st.components.v1.html(exp_input.as_html(), height=150)
+                # lime_html = f"""
+                # <style>
+                # body {{
+                #     background-color: #0F172A;
+                #     color: white;
+                # }}
+                
+                # div {{
+                #     color: white !important;
+                # }}
+                
+                # text {{
+                #     fill: white !important;
+                # }}
+                
+                # svg text {{
+                #     fill: white !important;
+                # }}
+                
+                # table {{
+                #     color: white !important;
+                # }}
+                
+                # </style>
+                
+                # {exp_input.as_html()}
+                # """
+                
+                # st.components.v1.html(lime_html, height=450, scrolling=True)
                 lime_html = f"""
                 <style>
+                
                 body {{
-                    background-color: #0F172A;
+                    background: linear-gradient(
+                        135deg,
+                        #0B1120,
+                        #111C44
+                    );
+                
                     color: white;
+                
+                    font-family: Arial, sans-serif;
+                
+                    padding: 15px;
                 }}
                 
-                div {{
-                    color: white !important;
+                .main-svg {{
+                    background-color: rgba(15,23,42,0.85) !important;
+                
+                    border-radius: 18px;
+                
+                    padding: 12px;
+                
+                    box-shadow:
+                        0 0 20px rgba(56,189,248,0.15);
                 }}
                 
                 text {{
                     fill: white !important;
+                
+                    color: white !important;
+                
+                    font-size: 14px !important;
                 }}
                 
-                svg text {{
-                    fill: white !important;
+                div {{
+                    color: white !important;
                 }}
                 
                 table {{
@@ -645,7 +695,11 @@ if generate:
                 {exp_input.as_html()}
                 """
                 
-                st.components.v1.html(lime_html, height=450, scrolling=True)
+                st.components.v1.html(
+                    lime_html,
+                    height=500,
+                    scrolling=True
+                )
         
         except Exception as e:
             st.error(f"Error Input XAI: {e}")
@@ -671,23 +725,73 @@ if generate:
         
                 st.caption("Kontribusi kata dalam storytelling terhadap karakteristik narasi")
                 #st.components.v1.html(exp_story.as_html(), height=280)
+                # lime_html_story = f"""
+                # <style>
+                # body {{
+                #     background-color: #0F172A;
+                #     color: white;
+                # }}
+                
+                # div {{
+                #     color: white !important;
+                # }}
+                
+                # text {{
+                #     fill: white !important;
+                # }}
+                
+                # svg text {{
+                #     fill: white !important;
+                # }}
+                
+                # table {{
+                #     color: white !important;
+                # }}
+                
+                # </style>
+                
+                # {exp_story.as_html()}
+                # """
+                
+                # st.components.v1.html(lime_html_story, height=450, scrolling=True)
                 lime_html_story = f"""
                 <style>
+                
                 body {{
-                    background-color: #0F172A;
+                    background: linear-gradient(
+                        135deg,
+                        #0B1120,
+                        #111C44
+                    );
+                
                     color: white;
+                
+                    font-family: Arial, sans-serif;
+                
+                    padding: 15px;
                 }}
                 
-                div {{
-                    color: white !important;
+                .main-svg {{
+                    background-color: rgba(15,23,42,0.85) !important;
+                
+                    border-radius: 18px;
+                
+                    padding: 12px;
+                
+                    box-shadow:
+                        0 0 20px rgba(56,189,248,0.15);
                 }}
                 
                 text {{
                     fill: white !important;
+                
+                    color: white !important;
+                
+                    font-size: 14px !important;
                 }}
                 
-                svg text {{
-                    fill: white !important;
+                div {{
+                    color: white !important;
                 }}
                 
                 table {{
@@ -699,7 +803,11 @@ if generate:
                 {exp_story.as_html()}
                 """
                 
-                st.components.v1.html(lime_html_story, height=450, scrolling=True)
+                st.components.v1.html(
+                    lime_html_story,
+                    height=500,
+                    scrolling=True
+                )
         
         except Exception as e:
             st.error(f"Error Story XAI: {e}")
