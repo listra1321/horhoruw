@@ -165,27 +165,59 @@ class DSSAgent:
     </STORYTELLING>
     
     <TASK>
-    Hasilkan analisis keputusan DSS dalam SATU PARAGRAF PADAT (maksimal 3 kalimat) untuk objek [{destination}] berdasarkan data <STORYTELLING> di atas.
-    #Ekstrak keputusan tata kelola operasional untuk destinasi [{destination}] berdasarkan data di dalam <STORYTELLING> di atas. 
+    Tulis langsung hasil keputusan DSS.
+
+    Jangan membuat judul.
+    Jangan membuat pengantar.
+    Jangan membuat label.
+    Jangan menulis:
+    "Berikut adalah..."
+    "Berdasarkan data di atas..."
+    "Hasil analisis..."
+    "Analisis keputusan DSS..."
+    
+    Kalimat pertama HARUS langsung dimulai dengan:
+    
+    - Pengelolaan ...
+    atau
+    - Manajemen ...
+    atau
+    - Kebijakan ...
+    
+    Gunakan maksimal 3 kalimat.
+    # Hasilkan analisis keputusan DSS dalam SATU PARAGRAF PADAT (maksimal 3 kalimat) untuk objek [{destination}] berdasarkan data <STORYTELLING> di atas.
+    # #Ekstrak keputusan tata kelola operasional untuk destinasi [{destination}] berdasarkan data di dalam <STORYTELLING> di atas. 
         
-    LOGIKA STRUKTUR ANALISIS (Buat secara mengalir, jangan kaku):
-    - Kalimat 1: Sebutkan pihak pengelola/kebijakan dan tindakan prioritas utama untuk mempertahankan poin positif yang dirasakan wisatawan di <STORYTELLING>.
-    - Kalimat 2: Hubungkan tindakan tersebut dengan upaya menjaga atmosfer atau kenyamanan spesifik yang tertulis di teks.
-    - Kalimat 3: Berikan rekomendasi keputusan taktis di lapangan (misalnya terkait pengaturan spot foto, alur jalan, atau pemeliharaan fisik objek) agar kepuasan wisatawan tetap konsisten.
+    # LOGIKA STRUKTUR ANALISIS (Buat secara mengalir, jangan kaku):
+    # - Kalimat 1: Sebutkan pihak pengelola/kebijakan dan tindakan prioritas utama untuk mempertahankan poin positif yang dirasakan wisatawan di <STORYTELLING>.
+    # - Kalimat 2: Hubungkan tindakan tersebut dengan upaya menjaga atmosfer atau kenyamanan spesifik yang tertulis di teks.
+    # - Kalimat 3: Berikan rekomendasi keputusan taktis di lapangan (misalnya terkait pengaturan spot foto, alur jalan, atau pemeliharaan fisik objek) agar kepuasan wisatawan tetap konsisten.
     
-    Ingat: Kosakata harus adaptif mengikuti variasi kata di dalam <STORYTELLING>, jangan gunakan template mati.
+    # Ingat: Kosakata harus adaptif mengikuti variasi kata di dalam <STORYTELLING>, jangan gunakan template mati.
    
-    Sesuaikan kata sifat di atas murni menggunakan padanan kata dari <STORYTELLING>. Jangan kreatif menambah konsep luar!
+    # Sesuaikan kata sifat di atas murni menggunakan padanan kata dari <STORYTELLING>. Jangan kreatif menambah konsep luar!
     
-    Instruksi Tambahan: Buat hasil analisis yang serupa dengan contoh di atas, namun sesuaikan bahasanya secara dinamis mengikuti variasi kata kunci di dalam <STORYTELLING>. Jangan melantur ke isu umum pariwisata yang tidak ada di teks!
+    # Instruksi Tambahan: Buat hasil analisis yang serupa dengan contoh di atas, namun sesuaikan bahasanya secara dinamis mengikuti variasi kata kunci di dalam <STORYTELLING>. Jangan melantur ke isu umum pariwisata yang tidak ada di teks!
     </TASK>
     """
     
         result = call_llm(system_prompt, user_prompt)
         
         # Post-processing tambahan (Guardsafe) untuk memotong jika LLM masih nakal memberi pengantar
-        if ":" in result and len(result.split(":")[0]) < 30:
-            result = result.split(":", 1)[1].strip()
+        # if ":" in result and len(result.split(":")[0]) < 30:
+        #     result = result.split(":", 1)[1].strip()
+        bad_prefixes = [
+            "berikut adalah",
+            "berdasarkan",
+            "hasil analisis",
+            "analisis keputusan",
+            "hasil keputusan dss"
+        ]
+        
+        for p in bad_prefixes:
+            if result.lower().startswith(p):
+                if ":" in result:
+                    result = result.split(":", 1)[1].strip()
             
         result = result.replace("\n", " ")
         result = " ".join(result.split())
