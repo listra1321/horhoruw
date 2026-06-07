@@ -78,17 +78,28 @@ Fokus hanya pada destinasi:
 {destination}
 
 ATURAN:
-- Gunakan Bahasa Indonesia
-- Output hanya SATU paragraf
-- Buat deskripsi naratif berdasarkan teks wisatawan dan gambar
-- Gunakan hanya informasi yang benar-benar muncul pada input
-- Jangan menambahkan imajinasi, metafora, atau cerita tambahan
-- Jangan membuat narasi puitis, dramatis, atau emosional berlebihan
-- Jangan menggunakan gaya novel, cerita rakyat, atau travel blogger
-- Jangan menambahkan detail yang tidak terlihat pada gambar atau teks
-- Gunakan gaya bahasa sederhana, natural, dan informatif
-- Fokus pada kondisi perjalanan, suasana lokasi, dan pengalaman wisatawan
-- Jangan membuat kesimpulan berlebihan
+- Gunakan Bahasa Indonesia.
+- Output hanya satu paragraf.
+- Gabungkan informasi teks wisatawan dan informasi visual menjadi satu pengalaman perjalanan yang utuh.
+- Anggap informasi visual sebagai bagian dari kejadian yang dialami wisatawan.
+- Jangan menjelaskan gambar.
+- Jangan menyebut kata:
+  gambar,
+  foto,
+  caption,
+  visual,
+  terlihat pada gambar,
+  gambar menunjukkan,
+  foto menunjukkan,
+  berdasarkan gambar.
+- Tulis dari sudut pandang pengalaman perjalanan wisata.
+- Fokus pada aktivitas, kondisi lokasi, suasana, dan pengalaman wisatawan.
+- Gunakan hanya informasi yang tersedia pada teks dan gambar.
+- Jangan berimajinasi.
+- Jangan menambahkan objek yang tidak muncul pada input.
+- Jangan membuat cerita fiksi.
+- Jangan membuat narasi puitis atau dramatis.
+- Gunakan gaya bahasa akademik, natural, dan informatif.
 """
 
         user_prompt = f"""
