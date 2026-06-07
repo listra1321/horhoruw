@@ -633,170 +633,170 @@ if generate:
         st.markdown("</div>", unsafe_allow_html=True)
  
         
-        # # ======================================================
-        # # XAI 1: INPUT EXPLANATION
-        # # ======================================================
-        # st.subheader("📊 XAI - Input Explanation")
+        # ======================================================
+        # XAI 1: INPUT EXPLANATION
+        # ======================================================
+        st.subheader("📊 XAI - Input Explanation")
         
-        # try:
-        #     exp_input = explain_with_lime(text)
-        #     explanation_input = exp_input.as_list()
+        try:
+            exp_input = explain_with_lime(text)
+            explanation_input = exp_input.as_list()
         
-        #     if not explanation_input:
-        #         st.warning("⚠️ Tidak ada fitur input yang dapat dijelaskan.")
-        #     else:
-        #         for word, weight in explanation_input:
-        #             if weight > 0:
-        #                 st.markdown(f"🟢 **{word}** → +{weight:.3f}")
-        #             else:
-        #                 st.markdown(f"🔴 **{word}** → {weight:.3f}")
+            if not explanation_input:
+                st.warning("⚠️ Tidak ada fitur input yang dapat dijelaskan.")
+            else:
+                for word, weight in explanation_input:
+                    if weight > 0:
+                        st.markdown(f"🟢 **{word}** → +{weight:.3f}")
+                    else:
+                        st.markdown(f"🔴 **{word}** → {weight:.3f}")
         
-        #         st.caption("Kontribusi fitur input terhadap pembentukan storytelling")
-        #         #st.components.v1.html(exp_input.as_html(), height=150)
+                st.caption("Kontribusi fitur input terhadap pembentukan storytelling")
+                #st.components.v1.html(exp_input.as_html(), height=150)
                 
-        #         lime_html = f"""
-        #         <style>
+                lime_html = f"""
+                <style>
                 
-        #         body {{
-        #             background-color: white;
+                body {{
+                    background-color: white;
                 
-        #             color: black;
+                    color: black;
                 
-        #             padding: 15px;
+                    padding: 15px;
                 
-        #             font-family: Arial, sans-serif;
-        #         }}
+                    font-family: Arial, sans-serif;
+                }}
                 
-        #         .main-svg {{
-        #             background-color: white !important;
-        #         }}
+                .main-svg {{
+                    background-color: white !important;
+                }}
                 
-        #         text {{
-        #             fill: black !important;
+                text {{
+                    fill: black !important;
                 
-        #             color: black !important;
-        #         }}
+                    color: black !important;
+                }}
                 
-        #         div {{
-        #             color: black !important;
-        #         }}
+                div {{
+                    color: black !important;
+                }}
                 
-        #         table {{
-        #             color: black !important;
-        #         }}
+                table {{
+                    color: black !important;
+                }}
                 
-        #         </style>
+                </style>
                 
-        #         {exp_input.as_html()}
-        #         """
+                {exp_input.as_html()}
+                """
                 
-        #         st.components.v1.html(
-        #             lime_html,
-        #             height=250,
-        #             scrolling=True
-        #         )
+                st.components.v1.html(
+                    lime_html,
+                    height=250,
+                    scrolling=True
+                )
         
-        # except Exception as e:
-        #     st.error(f"Error Input XAI: {e}")
+        except Exception as e:
+            st.error(f"Error Input XAI: {e}")
         
-        # st.divider()
-        # # ======================================================
-        # # XAI 2: STORYTELLING EXPLANATION
-        # # ======================================================
-        # st.subheader("📊 XAI - Storytelling Explanation")
+        st.divider()
+        # ======================================================
+        # XAI 2: STORYTELLING EXPLANATION
+        # ======================================================
+        st.subheader("📊 XAI - Storytelling Explanation")
         
-        # try:
-        #     exp_story = explain_with_lime(story)
-        #     explanation_story = exp_story.as_list()
+        try:
+            exp_story = explain_with_lime(story)
+            explanation_story = exp_story.as_list()
         
-        #     if not explanation_story:
-        #         st.warning("⚠️ Tidak ada fitur storytelling yang dapat dijelaskan.")
-        #     else:
-        #         for word, weight in explanation_story:
-        #             if weight > 0:
-        #                 st.markdown(f"🟢 **{word}** → +{weight:.3f}")
-        #             else:
-        #                 st.markdown(f"🔴 **{word}** → {weight:.3f}")
+            if not explanation_story:
+                st.warning("⚠️ Tidak ada fitur storytelling yang dapat dijelaskan.")
+            else:
+                for word, weight in explanation_story:
+                    if weight > 0:
+                        st.markdown(f"🟢 **{word}** → +{weight:.3f}")
+                    else:
+                        st.markdown(f"🔴 **{word}** → {weight:.3f}")
         
-        #         st.caption("Kontribusi kata dalam storytelling terhadap karakteristik narasi")
-        #         #st.components.v1.html(exp_story.as_html(), height=280)
+                st.caption("Kontribusi kata dalam storytelling terhadap karakteristik narasi")
+                #st.components.v1.html(exp_story.as_html(), height=280)
                
-        #         lime_html_story = f"""
-        #         <style>
+                lime_html_story = f"""
+                <style>
                 
-        #         body {{
-        #             background-color: white;
+                body {{
+                    background-color: white;
                 
-        #             color: black;
+                    color: black;
                 
-        #             padding: 15px;
+                    padding: 15px;
                 
-        #             font-family: Arial, sans-serif;
-        #         }}
+                    font-family: Arial, sans-serif;
+                }}
                 
-        #         .main-svg {{
-        #             background-color: white !important;
-        #         }}
+                .main-svg {{
+                    background-color: white !important;
+                }}
                 
-        #         text {{
-        #             fill: black !important;
+                text {{
+                    fill: black !important;
                 
-        #             color: black !important;
-        #         }}
+                    color: black !important;
+                }}
                 
-        #         div {{
-        #             color: black !important;
-        #         }}
+                div {{
+                    color: black !important;
+                }}
                 
-        #         table {{
-        #             color: black !important;
-        #         }}
+                table {{
+                    color: black !important;
+                }}
                 
-        #         </style>
+                </style>
                 
-        #         {exp_story.as_html()}
-        #         """
+                {exp_story.as_html()}
+                """
                 
-        #         st.components.v1.html(
-        #             lime_html_story,
-        #             height=250,
-        #             scrolling=True
-        #         )
+                st.components.v1.html(
+                    lime_html_story,
+                    height=250,
+                    scrolling=True
+                )
         
-        # except Exception as e:
-        #     st.error(f"Error Story XAI: {e}")
+        except Exception as e:
+            st.error(f"Error Story XAI: {e}")
             
-        # st.divider()
+        st.divider()
 
-        # # ======================================================
-        # # SHAP EXPLANATION
-        # # ======================================================
+        # ======================================================
+        # SHAP EXPLANATION
+        # ======================================================
         
-        # st.subheader("📈 SHAP Explanation")
+        st.subheader("📈 SHAP Explanation")
         
-        # try:
+        try:
         
-        #     shap_values = explain_with_shap(text)
+            shap_values = explain_with_shap(text)
         
-        #     shap_html = f"""
-        #     <div style="
-        #         background-color:white;
-        #         padding:15px;
-        #         border-radius:12px;
-        #     ">
-        #     {shap.plots.text(shap_values[0], display=False)}
-        #     </div>
-        #     """
+            shap_html = f"""
+            <div style="
+                background-color:white;
+                padding:15px;
+                border-radius:12px;
+            ">
+            {shap.plots.text(shap_values[0], display=False)}
+            </div>
+            """
         
-        #     st.components.v1.html(
-        #         shap_html,
-        #         height=400,
-        #         scrolling=True
-        #     )
+            st.components.v1.html(
+                shap_html,
+                height=400,
+                scrolling=True
+            )
         
-        # except Exception as e:
+        except Exception as e:
         
-        #     st.error(f"SHAP Error: {e}")
+            st.error(f"SHAP Error: {e}")
     
     else:
         st.warning("⚠️ Mohon lengkapi teks dan gambar.")
